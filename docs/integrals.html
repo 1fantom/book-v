@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <title>Интегралы — Математический анализ (Дадаян, Дударенко)</title>
+  <link rel="stylesheet" href="css/style.css"/>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js" async></script>
+  <style>
+    .content { max-width: 900px; margin: auto; padding: 20px; }
+    section {
+      background: #f9f9f9; border:1px solid #ddd; border-radius:8px;
+      padding:20px; margin-bottom:20px; box-shadow:0 2px 5px rgba(0,0,0,0.1);
+    }
+    h2, h3 { text-align:center; color:#2c3e50; margin-bottom:0.5em; }
+    ul { margin-left:1.5em; }
+    .formula { text-align:center; margin:1em 0; font-size:1.1em; }
+  </style>
+</head>
+<body>
+
+  <!-- Подключение общей шапки и навигации -->
+  <div id="header-placeholder"></div>
+
+  <!-- Контент -->
+  <main class="content" tabindex="-1">
+    <h2>Интегралы</h2>
+
+    <section>
+      <h3>1. Неопределённый интеграл</h3>
+      <p>Неопределённый интеграл функции \(f(x)\) — это семейство всех её первообразных \(F(x)\):</p>
+      <div class="formula">
+        $$\int f(x)\,dx = F(x) + C,\quad F'(x)=f(x).$$
+      </div>
+      <p>Константа \(C\) называется константой интегрирования.</p>
+    </section>
+
+    <section>
+      <h3>2. Определённый интеграл</h3>
+      <p>Определённый интеграл от \(a\) до \(b\) вычисляется по формуле Ньютона–Лейбница:</p>
+      <div class="formula">
+        $$\int_{a}^{b} f(x)\,dx = F(b) - F(a),$$
+      </div>
+      <p>где \(F\) — любая первообразная \(f\) на \([a,b]\).</p>
+    </section>
+
+    <section>
+      <h3>3. Основная теорема анализа</h3>
+      <p>Связывает дифференцирование и интегрирование: если \(F\) — первообразная \(f\), то интегрирование и затем дифференцирование возвращает исходную функцию:</p>
+      <div class="formula">
+        $$\frac{d}{dx}\Bigl(\int_{a}^{x}f(t)\,dt\Bigr)=f(x).$$
+      </div>
+    </section>
+
+    <section>
+      <h3>4. Методы интегрирования</h3>
+      <ul>
+        <li><strong>Замена переменной:</strong> \(u=g(x)\), тогда \(\int f(g(x))g'(x)\,dx = \int f(u)\,du\).</li>
+        <li><strong>Интегрирование по частям:</strong></li>
+        <div class="formula">
+          $$\int u\,dv = u v - \int v\,du.$$
+        </div>
+        <li><strong>Разложение на простейшие дроби:</strong> применяется для рациональных функций.</li>
+        <li><strong>Тригонометрические подстановки:</strong> при корнях вида \(\sqrt{a^2 - x^2}\), \(\sqrt{a^2 + x^2}\) и т.д.</li>
+      </ul>
+    </section>
+
+    <section>
+      <h3>5. Производные и интегралы элементарных функций</h3>
+      <ul>
+        <li>\(\int x^n\,dx = \tfrac{x^{n+1}}{n+1} + C\) для \(n\neq -1\).</li>
+        <li>\(\int e^x\,dx = e^x + C.\)</li>
+        <li>\(\int \frac{dx}{x} = \ln|x| + C.\)</li>
+        <li>\(\int \sin x\,dx = -\cos x + C,\quad \int \cos x\,dx = \sin x + C.\)</li>
+      </ul>
+    </section>
+
+    <section>
+      <h3>6. Примеры вычислений</h3>
+      <p><strong>Пример 1.</strong> \(\int (3x^2 - 5x + 2)\,dx = x^3 - \tfrac{5}{2}x^2 + 2x + C.\)</p>
+      <p><strong>Пример 2.</strong> \(\int x e^x\,dx\) по частям (возьмём \(u=x, dv=e^x dx\)):</p>
+      <div class="formula">
+        \(\int x e^x\,dx = x e^x - \int e^x\,dx = e^x(x - 1) + C.\)
+      </div>
+      <p><strong>Пример 3.</strong> \(\int \frac{dx}{x^2+1} = \arctan x + C.\)</p>
+    </section>
+
+    <section>
+      <h3>7. Приложения интегралов</h3>
+      <ul>
+        <li>Вычисление площадей под кривыми \(y=f(x)\).</li>
+        <li>Нахождение объёма тел вращения (формула Гюйгенса–Паппе):</li>
+        <div class="formula">
+          $$V = \pi\int_{a}^{b}[f(x)]^2\,dx.$$
+        </div>
+        <li>Применения в физике: работа силы \(W=\int F\,dx\), центр масс и др.</li>
+      </ul>
+    </section>
+
+  </main>
+
+  <!-- Подгружаем шапку и меню через JS -->
+  <script>
+    fetch('header.html')
+      .then(response => response.text())
+      .then(html => {
+        document.getElementById('header-placeholder').innerHTML = html;
+      })
+      .catch(() => {
+        document.getElementById('header-placeholder').innerHTML = '<p>Ошибка загрузки шапки и меню</p>';
+      });
+  </script>
+
+  <script src="js/menuToggle.js" defer></script>
+</body>
+</html>

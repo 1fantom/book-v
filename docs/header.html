@@ -1,0 +1,33 @@
+<header>
+  <div class="header-content">
+    <h1 class="logo">Учебник по математике</h1>
+    <button id="menu-toggle" class="menu-toggle" aria-label="Открыть меню" aria-expanded="false" aria-controls="sidebar">
+      <span class="bar"></span>
+      <span class="bar"></span>
+      <span class="bar"></span>
+    </button>
+  </div>
+</header>
+
+<nav id="sidebar" class="sidebar" aria-label="Основная навигация">
+  <ul>
+    <li><a href="index.html" class="nav-link">Главная</a></li>
+    <li class="has-submenu">
+      <a href="theory.html" class="nav-link">Теория <span class="submenu-arrow">▶</span></a>
+      <ul class="submenu">
+        <li><a href="limits.html">Пределы функций</a></li>
+        <li><a href="derivatives.html">Производные</a></li>
+        <li><a href="integrals.html">Интегралы</a></li>
+      </ul>
+    </li>
+    <li class="has-submenu">
+      <a href="practice.html" class="nav-link">Практика <span class="submenu-arrow">▶</span></a>
+      <ul class="submenu">
+        <li><a href="practice.html#tasks">Задачи</a></li>
+        <li><a href="practice.html#tests">Тесты</a></li>
+        <li><a href="practice.html#quizzes">Контрольные вопросы</a></li>
+      </ul>
+    </li>
+    <li><a href="contacts.html" class="nav-link">Контакты</a></li>
+  </ul>
+</nav>
