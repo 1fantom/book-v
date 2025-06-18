@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <title>1.4 Предел последовательности — Математический анализ</title>
+  <link rel="stylesheet" href="../css/style.css"/>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js" async></script>
+  <style>
+    .content { max-width: 900px; margin: auto; padding: 20px; }
+    section {
+      background: #f9f9f9; border:1px solid #ddd; border-radius:8px;
+      padding:20px; margin-bottom:20px; box-shadow:0 2px 5px rgba(0,0,0,0.1);
+    }
+    h2, h3 { text-align:center; color:#2c3e50; margin-bottom:0.5em; }
+    ul { margin-left:1.5em; }
+    .formula { text-align:center; margin:1em 0; font-size:1.1em; }
+    /* Кнопка внизу */
+    .btn-back {
+      display: block;
+      width: max-content;
+      margin: 30px auto 0 auto;
+      padding: 12px 28px;
+      font-size: 1rem;
+      color: #222;
+      background-color: #b0b0b0;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      text-decoration: none;
+      text-align: center;
+      box-shadow: 0 4px 8px rgba(150, 150, 150, 0.4);
+      transition: background-color 0.3s ease;
+      user-select: none;
+    }
+    .btn-back:hover, .btn-back:focus {
+      background-color: #999999;
+      outline: none;
+      color: #111;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Подключение общей шапки и меню -->
+  <div id="header-placeholder"></div>
+
+  <main class="content" tabindex="-1" role="main" aria-label="Предел последовательности">
+    <h2>1.4 Предел последовательности</h2>
+
+    <section>
+      <h3>Определение предела</h3>
+      <p>
+        Пусть дана числовая последовательность \( (a_n) \). Число \( L \in \mathbb{R} \) называется <strong>пределом</strong> последовательности \( a_n \), если:
+      </p>
+      <div class="formula">
+        \( \lim\limits_{n \to \infty} a_n = L \)
+      </div>
+      <p>
+        означает, что для любого \( \varepsilon > 0 \) существует такое натуральное число \( N \), что при всех \( n > N \) выполняется неравенство:
+      </p>
+      <div class="formula">
+        \( |a_n - L| < \varepsilon \)
+      </div>
+      <p>Это формальное (ε-δ) определение предела.</p>
+    </section>
+
+    <section>
+      <h3>Интуитивное объяснение</h3>
+      <p>
+        Если члены последовательности становятся сколь угодно близкими к числу \( L \) при увеличении \( n \), то \( L \) — предел этой последовательности.
+      </p>
+    </section>
+
+    <section>
+      <h3>Примеры</h3>
+      <ul>
+        <li>
+          \( a_n = \dfrac{1}{n} \Rightarrow \lim\limits_{n \to \infty} a_n = 0 \)
+        </li>
+        <li>
+          \( a_n = \dfrac{2n + 1}{n + 1} \Rightarrow \lim\limits_{n \to \infty} a_n = 2 \)
+        </li>
+        <li>
+          \( a_n = (-1)^n \Rightarrow \) предел не существует (члены не приближаются к одному числу)
+        </li>
+      </ul>
+    </section>
+
+    <section>
+      <h3>Свойства пределов</h3>
+      <ul>
+        <li>Предел суммы: \( \lim(a_n + b_n) = \lim a_n + \lim b_n \)</li>
+        <li>Предел произведения: \( \lim(a_n b_n) = (\lim a_n)(\lim b_n) \)</li>
+        <li>Предел частного: \( \lim \dfrac{a_n}{b_n} = \dfrac{\lim a_n}{\lim b_n} \), если \( \lim b_n \neq 0 \)</li>
+      </ul>
+    </section>
+
+    <section>
+      <h3>Сходимость и расходимость</h3>
+      <p>
+        Последовательность называется <strong>сходящейся</strong>, если у неё существует конечный предел. В противном случае она <strong>расходится</strong>.
+      </p>
+      <p>
+        Пример расходящейся: \( a_n = n \Rightarrow \lim\limits_{n \to \infty} a_n = \infty \)
+      </p>
+    </section>
+
+   <a href="../limits.html" class="btn-back" role="button" aria-label="Перейти к разделу о пределах">
+      Перейти к разделу о пределах
+    </a>
+  </main>
+
+  <script>
+    fetch('../header.html')
+      .then(response => response.text())
+      .then(html => {
+        document.getElementById('header-placeholder').innerHTML = html;
+      })
+      .catch(() => {
+        document.getElementById('header-placeholder').innerHTML = '<p style="color:red; text-align:center;">Ошибка загрузки шапки и меню</p>';
+      });
+  </script>
+  <script src="../js/menuToggle.js" defer></script>
+</body>
+</html>

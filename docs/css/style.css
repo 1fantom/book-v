@@ -1,0 +1,370 @@
+/* Палитра и градиенты */
+:root {
+  --color-bg-light: #f8f9fa;
+  --color-bg-secondary: #e9ecef;
+  --color-bg-tertiary: #dee2e6;
+  --color-bg-muted: #ced4da;
+  --color-text-muted: #adb5bd;
+  --color-text-secondary: #6c757d;
+  --color-text-primary: #495057;
+  --color-bg-dark: #343a40;
+  --color-bg-darker: #212529;
+
+  /* Градиенты */
+  --header-gradient: linear-gradient(90deg, #212529 0%, #343a40 100%);
+  --sidebar-gradient: linear-gradient(180deg, #e9ecef 0%, #dee2e6 100%);
+}
+
+/* Общие стили */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: 'Inter', sans-serif;
+  background-color: var(--color-bg-light);
+  color: var(--color-text-primary);
+  line-height: 1.6;
+  padding-top: 70px; /* высота шапки */
+}
+
+a {
+  text-decoration: none;
+  color: var(--color-text-primary);
+  transition: color 0.3s ease;
+}
+a:hover,
+a:focus {
+  color: var(--color-bg-darker);
+  outline: none;
+}
+
+/* Шапка */
+header {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  height: 70px;
+  background: var(--header-gradient);
+  backdrop-filter: saturate(180%) blur(10px);
+  -webkit-backdrop-filter: saturate(180%) blur(10px);
+  box-shadow: 0 4px 15px rgba(0,0,0,0.25);
+  display: flex; align-items: center;
+  padding: 0 30px; z-index:1100;
+  transition: background-color 0.3s ease, box-shadow 0.3s ease;
+}
+header:hover {
+  background: linear-gradient(90deg, #212529 0%, #495057 100%);
+  box-shadow: 0 6px 20px rgba(0,0,0,0.35);
+}
+
+.header-content {
+  display:flex; justify-content:space-between; align-items:center; width:100%;
+}
+
+.logo {
+  font-weight: 700;
+  font-size: 1.6rem;
+  color: var(--color-bg-light);
+  user-select: none;
+  letter-spacing: 0.05em;
+  text-shadow: 1px 1px 3px rgba(0,0,0,0.7);
+  transition: color 0.3s ease;
+}
+.logo:hover {
+  color: var(--color-text-muted);
+  cursor: default;
+}
+
+/* Гамбургер */
+.menu-toggle {
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 8px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 25px;
+  height: 20px;
+}
+.menu-toggle .bar {
+  height: 3px;
+  width: 100%;
+  border-radius: 2px;
+  background: var(--color-bg-light);
+  transition: background-color 0.3s ease;
+}
+.menu-toggle:hover .bar {
+  background: var(--color-text-muted);
+}
+
+/* Боковая панель */
+.sidebar {
+  position: fixed;
+  top: 70px;
+  left: 0;
+  width: 250px;
+  height: calc(100vh - 70px);
+  background: var(--sidebar-gradient);
+  border-right: 1px solid var(--color-bg-muted);
+  padding-top: 20px;
+  overflow-y: auto;
+  transform: translateX(-100%);
+  transition: transform 0.3s ease;
+  z-index: 1050;
+}
+.sidebar.active {
+  transform: translateX(0);
+}
+
+/* Навигация - стиль */
+
+.sidebar ul {
+  list-style: none;
+  margin: 0;
+  padding: 0 15px;
+}
+
+.sidebar ul li {
+  margin-bottom: 0.5em;
+  position: relative;
+}
+
+/* Основные ссылки меню */
+.nav-link,
+.sidebar > ul > li > a {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 14px 12px;
+  font-weight: 600;
+  color: var(--color-text-secondary);
+  background: linear-gradient(90deg, transparent 10%, rgba(255,255,255,0.08) 90%);
+  border-radius: 8px;
+  cursor: pointer;
+  transition:
+    background 0.3s ease,
+    color 0.3s ease,
+    box-shadow 0.3s ease;
+  box-shadow: inset 0 0 0 0 transparent;
+}
+
+/* Hover и фокус */
+.nav-link:hover,
+.sidebar > ul > li > a:hover,
+.nav-link:focus,
+.sidebar > ul > li > a:focus {
+  color: var(--color-text-primary);
+  background: linear-gradient(90deg, var(--color-bg-secondary), var(--color-bg-tertiary));
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  outline: none;
+}
+
+/* Активный пункт меню */
+.nav-link.active,
+.sidebar > ul > li > a.active {
+  color: var(--color-bg-darker);
+  background: linear-gradient(90deg, #495057, #343a40);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.25);
+  font-weight: 700;
+}
+
+/* Стрелка подменю */
+.submenu-arrow {
+  font-size: 0.9rem;
+  color: var(--color-text-muted);
+  transition: transform 0.3s ease, color 0.3s ease;
+}
+
+/* При наведении - стрелка меняет цвет и поворачивается */
+.has-submenu:hover > .nav-link .submenu-arrow {
+  color: var(--color-text-primary);
+  transform: rotate(90deg);
+}
+
+/* Подменю - плавное появление с тенью */
+.submenu {
+  max-height: 0;
+  overflow: hidden;
+  padding-left: 20px;
+  margin: 0.4em 0;
+  border-left: 2px solid transparent;
+  transition:
+    max-height 0.4s ease,
+    border-color 0.4s ease;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.05);
+}
+
+/* Показываем подменю при ховере */
+.has-submenu:hover > .submenu {
+  max-height: 500px;
+  border-color: var(--color-bg-muted);
+}
+
+/* Ссылки в подменю */
+.submenu li a {
+  display: block;
+  padding: 12px 10px;
+  color: var(--color-text-muted);
+  border-radius: 6px;
+  transition: background-color 0.25s ease, color 0.3s ease;
+}
+
+/* Ховер по подменю */
+.submenu li a:hover {
+  background: var(--color-bg-tertiary);
+  color: var(--color-text-primary);
+  box-shadow: inset 2px 0 0 var(--color-bg-dark);
+}
+
+/* Активная ссылка в подменю */
+.submenu li a.active {
+  background: var(--color-bg-secondary);
+  color: var(--color-bg-darker);
+  font-weight: 600;
+  box-shadow: inset 3px 0 0 var(--color-bg-darker);
+}
+
+/* Контент */
+.content {
+  margin-left: 0;
+  padding: 25px 30px 40px;
+  transition: margin-left 0.3s ease;
+}
+.sidebar.active ~ .content {
+  margin-left: 250px;
+}
+
+/* Заголовки */
+h2 {
+  font-size: 2rem;
+  font-weight: 700;
+  margin-bottom: 15px;
+}
+.summary {
+  font-size: 1.1rem;
+  font-weight: 500;
+  margin-bottom: 20px;
+}
+
+/* Адаптив */
+@media (max-width: 768px) {
+  .sidebar {
+    transform: translateX(-100%);
+  }
+  .sidebar.active {
+    transform: translateX(0);
+  }
+  .content {
+    margin-left: 0;
+  }
+}
+/* --- Добавленные стили для решений, кнопок, графиков --- */
+
+/* Блок решения */
+.solution {
+  margin-top: 12px;
+  background: var(--color-bg-secondary);
+  border-radius: 10px;
+  padding: 12px 20px;
+  color: var(--color-text-primary);
+  font-size: 1rem;
+  line-height: 1.5;
+  box-shadow: inset 0 0 8px rgba(0,0,0,0.05);
+  transition: background-color 0.3s ease;
+}
+
+.solution p {
+  margin-top: 0;
+  margin-bottom: 10px;
+}
+
+/* Текст решения — скрываем/показываем */
+.text-solution {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.4s ease, padding 0.4s ease;
+  padding: 0 16px;
+  color: var(--color-text-primary);
+  display: none;
+}
+
+.text-solution.open {
+  max-height: 800px;
+  padding: 16px;
+  display: block;
+}
+
+/* Кнопка переключения решения */
+.toggle-btn {
+  background-color: var(--color-bg-dark);
+  color: var(--color-bg-light);
+  border: none;
+  padding: 6px 16px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: 600;
+  float: right;
+  user-select: none;
+  transition: background-color 0.3s ease;
+  margin-top: -36px;
+}
+
+.toggle-btn:hover,
+.toggle-btn:focus {
+  background-color: var(--color-bg-darker);
+  outline: none;
+}
+
+.toggle-btn:focus-visible {
+  outline: 2px solid var(--color-text-secondary);
+  outline-offset: 2px;
+}
+
+/* График внутри решения */
+.solution > div[id^="plot"] {
+  width: 100%;
+  height: 300px;
+  margin-bottom: 16px;
+  border-radius: 8px;
+  box-shadow: 0 1px 5px rgba(0,0,0,0.1);
+  background-color: var(--color-bg-light);
+}
+
+/* Чтобы не перекрывался текст под кнопкой */
+.exercise-list li {
+  position: relative;
+  padding-bottom: 24px;
+}
+
+/* Чистим отступы у strong внутри списка задач */
+.exercise-list li strong {
+  display: block;
+  margin-bottom: 12px;
+  color: var(--color-text-primary);
+  font-weight: 700;
+  font-size: 1.1rem;
+}
+
+/* Плавные переходы для меню и навигации */
+.nav-link,
+.sidebar > ul > li > a {
+  transition:
+    background 0.3s ease,
+    color 0.3s ease,
+    box-shadow 0.3s ease;
+}
+
+/* Адаптив: для маленьких экранов кнопка становится блочной */
+@media (max-width: 480px) {
+  .toggle-btn {
+    float: none;
+    display: block;
+    width: 100%;
+    margin: 10px 0 0 0;
+    text-align: center;
+  }
+}

@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>1.9 Теоремы о непрерывных функциях — Математический анализ</title>
+  <link rel="stylesheet" href="../css/style.css" />
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js" async></script>
+  <style>
+    .content { max-width: 900px; margin: auto; padding: 20px; }
+    section {
+      background: #f9f9f9; border:1px solid #ddd; border-radius:8px;
+      padding:20px; margin-bottom:20px; box-shadow:0 2px 5px rgba(0,0,0,0.1);
+    }
+    h2, h3 { text-align:center; color:#2c3e50; margin-bottom:0.5em; }
+    .formula { text-align:center; margin:1em 0; font-size:1.1em; }
+    .example {
+      background: #eaf2f8;
+      border-left: 5px solid #3b5998;
+      padding: 12px 18px;
+      margin-top: 10px;
+      font-style: italic;
+      color: #2c3e50;
+      border-radius: 5px;
+    }
+    .btn-back {
+      display: block;
+      width: max-content;
+      margin: 30px auto 0 auto;
+      padding: 12px 28px;
+      font-size: 1rem;
+      color: #222;
+      background-color: #b0b0b0;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      text-decoration: none;
+      text-align: center;
+      box-shadow: 0 4px 8px rgba(150, 150, 150, 0.4);
+      transition: background-color 0.3s ease;
+      user-select: none;
+    }
+    .btn-back:hover, .btn-back:focus {
+      background-color: #999999;
+      outline: none;
+      color: #111;
+    }
+    svg {
+      display: block;
+      margin: 20px auto;
+      border: 1px solid #ccc;
+      background: #fff;
+      border-radius: 8px;
+      max-width: 100%;
+      height: 250px;
+    }
+  </style>
+</head>
+<body>
+
+  <div id="header-placeholder"></div>
+
+  <main class="content" tabindex="-1" role="main" aria-label="Теоремы о непрерывных функциях">
+    <h2>1.9 Теоремы о непрерывных функциях</h2>
+
+    <section>
+      <h3>Теорема Вейерштрасса (о максимуме и минимуме)</h3>
+      <p>Если функция \( f(x) \) непрерывна на отрезке \([a, b]\), то она достигает своих максимального и минимального значений.</p>
+      <div class="formula">
+        \( \exists\, x_{\min}, x_{\max} \in [a,b]:\; f(x_{\min})\le f(x)\le f(x_{\max}) \)
+      </div>
+      <div class="example">
+        <strong>Пример:</strong> \( f(x) = -x^2+4 \) на \([-2,2]\): максимум равен 4 при \(x=0\), минимум равен 0 при \(x=\pm2\).
+      </div>
+      <svg role="img" aria-label="График функции Вейерштрасса" viewBox="0 0 400 200" >
+        <!-- Оси -->
+        <line x1="40" y1="180" x2="360" y2="180" stroke="#444" stroke-width="2" />
+        <line x1="40" y1="20"  x2="40"  y2="180" stroke="#444" stroke-width="2" />
+        <text x="365" y="185" font-size="12" fill="#333">x</text>
+        <text x="10"  y="30"  font-size="12" fill="#333">y</text>
+
+        <!-- График: f(x) = -x²+4 -->
+        <path fill="none" stroke="#3b5998" stroke-width="3"
+          d="
+            M40 164
+            Q90 80 140 20
+            T340 164
+          "/>
+
+        <!-- Точки максимума и минимума -->
+        <circle cx="190" cy="20" r="6" fill="#3b5998" />
+        <text x="195" y="15" font-size="12" fill="#3b5998">max</text>
+        <circle cx="40" cy="164" r="6" fill="#3b5998" />
+        <circle cx="340" cy="164" r="6" fill="#3b5998" />
+        <text x="20" y="180" font-size="12" fill="#3b5998">min</text>
+        <text x="330" y="180" font-size="12" fill="#3b5998">min</text>
+      </svg>
+    </section>
+
+    <section>
+      <h3>Теорема о промежуточном значении (Больцано–Коши)</h3>
+      <p>Если \( f \) непрерывна на \([a,b]\) и меняет знак, то существует \( c\in(a,b)\) с \( f(c)=0 \).</p>
+      <div class="example">
+        <strong>Пример:</strong> \( f(x)=x^3-x \) на \([0,2]\): \( f(0)=0\), \( f(2)=6>0\), корень есть.
+      </div>
+      <svg role="img" aria-label="График функции Больцано" viewBox="0 0 400 200" >
+        <!-- Оси -->
+        <line x1="40" y1="180" x2="360" y2="180" stroke="#444" stroke-width="2" />
+        <line x1="40" y1="20"  x2="40"  y2="180" stroke="#444" stroke-width="2" />
+        <text x="365" y="185" font-size="12" fill="#333">x</text>
+        <text x="10"  y="30"  font-size="12" fill="#333">y</text>
+
+        <!-- График: f(x) = x³ - x -->
+        <path fill="none" stroke="#d35400" stroke-width="3"
+          d="
+            M40 180
+            C100 140, 180 50, 260 80
+            S340 120 360 140
+          "/>
+
+        <!-- Точка корня -->
+        <circle cx="40" cy="180" r="6" fill="#d35400" />
+        <text x="20" y="190" font-size="12" fill="#d35400">0</text>
+
+        <!-- Линия нуля -->
+        <line x1="40" y1="110" x2="360" y2="110" stroke="#999" stroke-dasharray="5 5" />
+        <text x="365" y="115" font-size="12" fill="#999">y=0</text>
+      </svg>
+    </section>
+
+    <section>
+      <h3>Теорема об обратной функции</h3>
+      <p>Непрерывная строго монотонная функция \( f \) на \([a,b]\) имеет непрерывную обратную \( f^{-1} \).</p>
+      <div class="example">
+        <strong>Пример:</strong> \( f(x)=2x+3 \) — строгая, обратная \( f^{-1}(y)=(y−3)/2 \), также непрерывна.
+      </div>
+      <svg role="img" aria-label="График функции и её обратной" viewBox="0 0 400 200" >
+        <!-- Оси -->
+        <line x1="40" y1="180" x2="360" y2="180" stroke="#444" stroke-width="2" />
+        <line x1="40" y1="20"  x2="40"  y2="180" stroke="#444" stroke-width="2" />
+        <text x="365" y="185" font-size="12" fill="#333">x</text>
+        <text x="10"  y="30"  font-size="12" fill="#333">y</text>
+
+        <!-- y = 2x + 3 -->
+        <line x1="40" y1="140" x2="360" y2="60" stroke="#27ae60" stroke-width="3" />
+
+        <!-- Обратная y = (x-3)/2 -->
+        <line x1="60" y1="180" x2="340" y2="20" stroke="#2980b9" stroke-width="3" stroke-dasharray="8 4" />
+
+        <!-- Легенда -->
+        <rect x="280" y="30" width="110" height="50" fill="#fff" stroke="#aaa" stroke-width="1" rx="6" ry="6" />
+        <line x1="295" y1="50" x2="335" y2="50" stroke="#27ae60" stroke-width="3" />
+        <text x="340" y="55" font-size="14" fill="#27ae60">f(x) = 2x+3</text>
+        <line x1="295" y1="75" x2="335" y2="75" stroke="#2980b9" stroke-width="3" stroke-dasharray="8 4" />
+        <text x="340" y="80" font-size="14" fill="#2980b9">Обратная функция</text>
+      </svg>
+    </section>
+
+    <a href="../limits.html" class="btn-back" role="button" aria-label="Перейти к разделу о пределах">
+      Перейти к разделу о пределах
+    </a>  
+</main>
+
+  <script>
+    fetch('../header.html')
+      .then(response => response.text())
+      .then(html => {
+        document.getElementById('header-placeholder').innerHTML = html;
+      })
+      .catch(() => {
+        document.getElementById('header-placeholder').innerHTML = '<p style="color:red; text-align:center;">Ошибка загрузки шапки и меню</p>';
+      });
+  </script>
+  <script src="../js/menuToggle.js" defer></script>
+</body>
+</html>

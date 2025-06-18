@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>1.10 Равномерная непрерывность функции — Математический анализ</title>
+  <link rel="stylesheet" href="../css/style.css" />
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js" async></script>
+  <style>
+    .content { max-width: 900px; margin: auto; padding: 20px; }
+    section {
+      background: #f9f9f9;
+      border: 1px solid #ddd;
+      border-radius: 8px;
+      padding: 20px;
+      margin-bottom: 20px;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    }
+    h2, h3 {
+      text-align: center;
+      color: #2c3e50;
+      margin-bottom: 0.5em;
+    }
+    .formula {
+      text-align: center;
+      margin: 1em 0;
+      font-size: 1.1em;
+    }
+    .example {
+      background: #eaf2f8;
+      border-left: 5px solid #3b5998;
+      padding: 12px 18px;
+      margin-top: 10px;
+      font-style: italic;
+      color: #2c3e50;
+      border-radius: 5px;
+    }
+    .btn-back {
+      display: block;
+      width: max-content;
+      margin: 30px auto 0;
+      padding: 12px 28px;
+      font-size: 1rem;
+      color: #222;
+      background-color: #b0b0b0;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      text-decoration: none;
+      text-align: center;
+      box-shadow: 0 4px 8px rgba(150, 150, 150, 0.4);
+      transition: background-color 0.3s ease;
+      user-select: none;
+    }
+    .btn-back:hover, .btn-back:focus {
+      background-color: #999999;
+      outline: none;
+      color: #111;
+    }
+  </style>
+</head>
+<body>
+
+  <div id="header-placeholder"></div>
+
+  <main class="content" tabindex="-1" role="main" aria-label="Равномерная непрерывность функции">
+    <h2>1.10 Равномерная непрерывность функции</h2>
+
+    <section>
+      <p>
+        Функция \( f(x) \) называется <strong>равномерно непрерывной</strong> на множестве \( M \), если:
+      </p>
+      <div class="formula">
+        \( \forall \varepsilon > 0\ \exists \delta > 0:\ \forall x, y \in M\quad |x - y| < \delta \Rightarrow |f(x) - f(y)| < \varepsilon \)
+      </div>
+      <p>
+        Главное отличие от обычной непрерывности в том, что <strong>одно и то же</strong> \( \delta \) подходит для всех точек множества \( M \).
+      </p>
+    </section>
+
+    <section>
+      <h3>Пример равномерной непрерывности</h3>
+      <p>
+        Функция \( f(x) = x^2 \) <em>не</em> равномерно непрерывна на \( \mathbb{R} \), но является равномерно непрерывной на отрезке \([0, 1]\).
+      </p>
+      <div class="example">
+        Это связано с тем, что при больших \( x \) значение \( |f(x) - f(y)| \) может быть очень большим даже при малом \( |x - y| \).
+      </div>
+      <p>
+        В отличие от этого, функция \( f(x) = \sin x \) равномерно непрерывна на всей числовой прямой, так как её производная ограничена и функция "не слишком резко меняется".
+      </p>
+    </section>
+
+    <section>
+      <h3>Теорема Кантора</h3>
+      <p>
+        <strong>Теорема Кантора:</strong> если функция \( f \) непрерывна на замкнутом и ограниченном множестве (например, на отрезке), то она равномерно непрерывна на этом множестве.
+      </p>
+      <div class="example">
+        Это важный результат, поскольку равномерная непрерывность гарантирует устойчивость функции к малым изменениям аргумента во всём множестве.
+      </div>
+    </section>
+
+    <section>
+      <h3>Дополнительные свойства</h3>
+      <p>
+        Равномерная непрерывность важна при изучении пределов функций и интегрировании, так как позволяет переносить пределы через интегралы и другие операции.
+      </p>
+      <p>
+        Кроме того, равномерно непрерывные функции можно продолжить на замыкание множества, сохраняя непрерывность.
+      </p>
+    </section>
+
+    <a href="../limits.html" class="btn-back" role="button" aria-label="Перейти к разделу о пределах">
+      Перейти к разделу о пределах
+    </a>
+  </main>
+
+  <script>
+    fetch('../header.html')
+      .then(r => r.ok ? r.text() : Promise.reject())
+      .then(html => document.getElementById('header-placeholder').innerHTML = html)
+      .catch(() => {
+        document.getElementById('header-placeholder').innerHTML =
+          '<p style="color:red; text-align:center">Ошибка загрузки шапки</p>';
+      });
+  </script>
+  <script src="../js/menuToggle.js" defer></script>
+</body>
+</html>
