@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <title>4.4 Свойства определённого интеграла</title>
+  <link rel="stylesheet" href="../css/style.css"/>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js" async></script>
+  <style>
+    .content { max-width: 900px; margin: auto; padding: 20px; font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif; color: #2c3e50; }
+    section { background: #f9f9f9; border: 1px solid #ddd; border-radius: 8px; padding: 25px; margin-bottom: 25px; box-shadow: 0 2px 5px rgba(0,0,0,0.1); }
+    h2, h3 { text-align: center; margin-bottom: 1.2em; color: #2a2a2b; }
+    p, ul { line-height: 1.6; font-size: 1.1rem; margin-bottom: 1.2em; }
+    ul { margin-left: 24px; }
+    .formula { text-align: center; margin: 1.2em 0; font-size: 1.4rem; color: #404040; font-weight: 500; }
+    .example { background-color: #e9f0ff; border-left: 6px solid #5a7edc; padding: 15px 20px; margin-top: 15px; font-style: italic; }
+    .btn-back { display: inline-block; padding: 14px 30px; font-size: 1.1rem; color: #222; background-color: #b0b0b0; border: none; border-radius: 10px; cursor: pointer; text-decoration: none; box-shadow: 0 5px 10px rgba(150,150,150,0.4); transition: background-color 0.3s ease; user-select: none; margin-top: 35px; }
+    .btn-back:hover { background-color: #999; color: #111; }
+  </style>
+</head>
+<body>
+  <div id="header-placeholder"></div>
+  <main class="content" aria-label="Свойства определённого интеграла">
+    <h2>4.4 Свойства определённого интеграла</h2>
+
+    <section>
+      <h3>1. Линейность интеграла</h3>
+      <p>
+        Определённый интеграл сохраняет операцию линейной комбинации функций. Для любых констант \( \alpha, \beta \) и интегрируемых на \([a, b]\) функций \( f(x) \) и \( g(x) \) справедливо:
+      </p>
+      <div class="formula">
+        \[
+          \int_a^b \big(\alpha f(x) + \beta g(x)\big)\,dx = \alpha \int_a^b f(x)\,dx + \beta \int_a^b g(x)\,dx
+        \]
+      </div>
+      <p>
+        Это свойство позволяет разбивать сложные функции на более простые, интегралы которых легче вычислять.
+      </p>
+    </section>
+
+    <section>
+      <h3>2. Аддитивность по промежутку интегрирования</h3>
+      <p>
+        Если функция \( f(x) \) интегрируема на \([a, b]\) и \( c \) — точка внутри этого отрезка, то интеграл на всём отрезке равен сумме интегралов на частях:
+      </p>
+      <div class="formula">
+        \[
+          \int_a^b f(x)\,dx = \int_a^c f(x)\,dx + \int_c^b f(x)\,dx
+        \]
+      </div>
+      <p>
+        Данное свойство удобно применять при вычислении интегралов на сложных промежутках, разбивая задачу на более простые.
+      </p>
+      <div class="example">
+        <strong>Пример:</strong> Найти интеграл \( \int_0^3 f(x) dx \), если известно, что \( \int_0^1 f(x) dx = 2 \) и \( \int_1^3 f(x) dx = 5 \).
+        <br/>
+        Решение:
+        \[
+          \int_0^3 f(x) dx = \int_0^1 f(x) dx + \int_1^3 f(x) dx = 2 + 5 = 7.
+        \]
+      </div>
+    </section>
+
+    <section>
+      <h3>3. Изменение порядка пределов</h3>
+      <p>
+        При смене местами нижнего и верхнего пределов интегрирования, знак интеграла меняется на противоположный:
+      </p>
+      <div class="formula">
+        \[
+          \int_a^b f(x)\,dx = - \int_b^a f(x)\,dx
+        \]
+      </div>
+      <p>
+        Это связано с направлением обхода интервала интегрирования и важно учитывать при вычислениях и преобразованиях.
+      </p>
+      <div class="example">
+        <strong>Пример:</strong> \( \int_2^5 f(x) dx = - \int_5^2 f(x) dx \).
+      </div>
+    </section>
+
+    <section>
+      <h3>4. Интеграл от нулевой функции</h3>
+      <p>
+        Если функция на всём отрезке равна нулю, то и её интеграл равен нулю:
+      </p>
+      <div class="formula">
+        \[
+          \int_a^b 0\,dx = 0
+        \]
+      </div>
+      <p>
+        Это отражает простую геометрическую интерпретацию: площадь под осью абсцисс равна нулю.
+      </p>
+    </section>
+
+    <section>
+      <h3>5. Неотрицательность интеграла для неотрицательной функции</h3>
+      <p>
+        Если функция \( f(x) \ge 0 \) на всём промежутке \([a, b]\), то определённый интеграл также неотрицателен:
+      </p>
+      <div class="formula">
+        \[
+          \int_a^b f(x)\,dx \ge 0
+        \]
+      </div>
+      <p>
+        Это следует из того, что интеграл геометрически представляет площадь под графиком функции.
+      </p>
+      <div class="example">
+        <strong>Пример:</strong> Площадь фигуры под графиком \( f(x) = \sin^2 x \) на \([0, \pi]\) положительна, так как \( \sin^2 x \ge 0 \).
+      </div>
+    </section>
+
+    <section>
+      <h3>6. Оценка интеграла через верхнюю и нижнюю границы функции</h3>
+      <p>
+        Пусть \(m\) и \(M\) — соответственно наименьшее и наибольшее значения функции \( f(x) \) на отрезке \([a, b]\):
+      </p>
+      <div class="formula">
+        \[
+          m \le f(x) \le M, \quad \forall x \in [a, b].
+        \]
+      </div>
+      <p>
+        Тогда интеграл можно оценить сверху и снизу:
+      </p>
+      <div class="formula">
+        \[
+          m(b - a) \le \int_a^b f(x)\,dx \le M(b - a).
+        \]
+      </div>
+      <p>
+        Эти оценки позволяют понять, в каких пределах может находиться значение интеграла без точного вычисления.
+      </p>
+    </section>
+
+    <section>
+      <h3>7. Монотонность интеграла</h3>
+      <p>
+        Если для всех \( x \in [a,b] \) выполнено \( f(x) \le g(x) \), то:
+      </p>
+      <div class="formula">
+        \[
+          \int_a^b f(x)\,dx \le \int_a^b g(x)\,dx
+        \]
+      </div>
+      <p>
+        Это свойство отражает интуитивно понятное правило — интеграл больше для функции, которая "выше" на всем промежутке.
+      </p>
+    </section>
+
+    <section>
+      <h3>8. Абсолютная величина интеграла</h3>
+      <p>
+        Выполняется неравенство:
+      </p>
+      <div class="formula">
+        \[
+          \left| \int_a^b f(x) dx \right| \le \int_a^b |f(x)| dx
+        \]
+      </div>
+      <p>
+        Это важное свойство при оценках интегралов, особенно для функций, меняющих знак.
+      </p>
+    </section>
+
+    <section>
+      <h3>Итог</h3>
+      <p>
+        Свойства определённого интеграла — фундаментальная база для решения практических и теоретических задач анализа. Они облегчают вычисления, позволяют разбивать задачи на части и гарантируют корректность операций с интегралами.
+      </p>
+    </section>
+
+    <div style="text-align:center;">
+      <a href="../integral-definite.html" class="btn-back" role="button" aria-label="К списку разделов">К списку разделов</a>
+    </div>
+  </main>
+
+  <script>
+    fetch('../header.html').then(r => r.ok ? r.text() : Promise.reject())
+      .then(html => {
+        document.getElementById('header-placeholder').innerHTML = html;
+        if (window.MathJax) {
+          MathJax.typesetPromise();
+        }
+      })
+      .catch(() => {
+        document.getElementById('header-placeholder').innerHTML = '<p style="color:red;text-align:center">Ошибка загрузки шапки</p>';
+      });
+  </script>
+  <script src="../js/menuToggle.js" defer></script>
+</body>
+</html>

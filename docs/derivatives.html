@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <title>Производные — Математический анализ</title>
+  <link rel="stylesheet" href="css/style.css"/>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js" async></script>
+  <style>
+    .content {
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 20px;
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+    .section-card {
+      background: #f9f9f9;
+      border: 1px solid #ddd;
+      border-radius: 10px;
+      padding: 20px 25px;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+      transition: transform 0.3s, box-shadow 0.3s;
+    }
+    .section-card:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 6px 15px rgba(0,0,0,0.15);
+    }
+    .section-card h3 {
+      margin: 0 0 10px;
+      font-size: 1.4rem;
+      color: #2c3e50;
+    }
+    .section-card p {
+      margin: 0 0 15px;
+      color: #555;
+      line-height: 1.4;
+    }
+    .btn-more {
+      display: inline-block;
+      background-color: #444;
+      color: #fff;
+      border: none;
+      border-radius: 6px;
+      padding: 8px 16px;
+      font-size: 0.95rem;
+      font-weight: 600;
+      cursor: pointer;
+      text-decoration: none;
+      transition: background-color 0.3s, box-shadow 0.2s;
+    }
+    .btn-more:hover {
+      background-color: #222;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+    }
+    h2 {
+      text-align: center;
+      margin-bottom: 30px;
+      color: #212529;
+      font-size: 2.5rem;
+      font-weight: 700;
+      text-shadow: 1px 1px 2px rgba(0,0,0,0.1);
+    }
+  </style>
+</head>
+<body>
+
+  <div id="header-placeholder"></div>
+
+  <main class="content" tabindex="-1">
+    <h2>Производные</h2>
+
+    <div class="section-card">
+      <h3><a href="functions/2.1.html">2.1 Задачи, приводящие к понятию производной</a></h3>
+      <p>Рассмотрение реальных задач, которые побуждают к введению понятия производной функции.</p>
+      <a href="functions/2.1.html" class="btn-more">Перейти</a>
+    </div>
+
+    <div class="section-card">
+      <h3><a href="functions/2.2.html">2.2 Производная функции</a></h3>
+      <p>Определение производной, её смысл и формула через предел отношения приращений.</p>
+      <a href="functions/2.2.html" class="btn-more">Перейти</a>
+    </div>
+
+    <div class="section-card">
+      <h3><a href="functions/2.3.html">2.3 Теорема дифференцирования</a></h3>
+      <p>Основные правила дифференцирования и доказательства важнейших теорем.</p>
+      <a href="functions/2.3.html" class="btn-more">Перейти</a>
+    </div>
+
+    <div class="section-card">
+      <h3><a href="functions/2.4.html">2.4 Производные основных элементарных функций</a></h3>
+      <p>Производные степенных, показательных, логарифмических и тригонометрических функций.</p>
+      <a href="functions/2.4.html" class="btn-more">Перейти</a>
+    </div>
+
+    <div class="section-card">
+      <h3><a href="functions/2.5.html">2.5 Касательная и нормаль к линии</a></h3>
+      <p>Построение уравнений касательной и нормали к графику функции в заданной точке.</p>
+      <a href="functions/2.5.html" class="btn-more">Перейти</a>
+    </div>
+
+    <div class="section-card">
+      <h3><a href="functions/2.6.html">2.6 Дифференциал функции</a></h3>
+      <p>Понятие дифференциала как линейного приближения и его связь с производной.</p>
+      <a href="functions/2.6.html" class="btn-more">Перейти</a>
+    </div>
+
+    <div class="section-card">
+      <h3><a href="functions/2.7.html">2.7 Производные и дифференциалы высших порядков</a></h3>
+      <p>Определения и примеры вычисления производных и дифференциалов второго и более порядков.</p>
+      <a href="functions/2.7.html" class="btn-more">Перейти</a>
+    </div>
+
+    <div class="section-card">
+      <h3><a href="functions/2.8.html">2.8 Основные теоремы дифференциального исчисления</a></h3>
+      <p>Теоремы Ролля, Лагранжа, Коши и их применение.</p>
+      <a href="functions/2.8.html" class="btn-more">Перейти</a>
+    </div>
+
+    <div class="section-card">
+      <h3><a href="functions/2.9.html">2.9 Производная неявной функции</a></h3>
+      <p>Дифференцирование уравнений, где переменные связаны неявно.</p>
+      <a href="functions/2.9.html" class="btn-more">Перейти</a>
+    </div>
+
+    <div class="section-card">
+      <h3><a href="functions/2.10.html">2.10 Раскрытие неопределённостей</a></h3>
+      <p>Методы разрешения неопределённостей: эквивалентные замены, правило Лопиталя.</p>
+      <a href="functions/2.10.html" class="btn-more">Перейти</a>
+    </div>
+
+    <div class="section-card">
+      <h3><a href="functions/2.11.html">2.11 Формула Тейлора</a></h3>
+      <p>Разложение функции в ряд Тейлора, формула с остаточным членом.</p>
+      <a href="functions/2.11.html" class="btn-more">Перейти</a>
+    </div>
+
+    <div class="section-card">
+      <h3><a href="functions/2.12.html">2.12 Условия монотонности функции</a></h3>
+      <p>Использование первой производной для анализа возрастания и убывания функции.</p>
+      <a href="functions/2.12.html" class="btn-more">Перейти</a>
+    </div>
+
+    <div class="section-card">
+      <h3><a href="functions/2.13.html">2.13 Экстремумы функции</a></h3>
+      <p>Методы нахождения точек максимума и минимума функции.</p>
+      <a href="functions/2.13.html" class="btn-more">Перейти</a>
+    </div>
+
+    <div class="section-card">
+      <h3><a href="functions/2.14.html">2.14 Точки перегиба графика функции</a></h3>
+      <p>Определение и нахождение точек перегиба через вторую производную.</p>
+      <a href="functions/2.14.html" class="btn-more">Перейти</a>
+    </div>
+
+    <div class="section-card">
+      <h3><a href="functions/2.15.html">2.15 Построение графиков функций</a></h3>
+      <p>Полный анализ функции и построение её графика с учётом производных.</p>
+      <a href="functions/2.15.html" class="btn-more">Перейти</a>
+    </div>
+
+  </main>
+
+  <script>
+    fetch('header.html')
+      .then(response => response.text())
+      .then(html => {
+        document.getElementById('header-placeholder').innerHTML = html;
+      })
+      .catch(() => {
+        document.getElementById('header-placeholder').innerHTML = '<p>Ошибка загрузки шапки и меню</p>';
+      });
+  </script>
+  <script src="js/menuToggle.js" defer></script>
+
+</body>
+</html>

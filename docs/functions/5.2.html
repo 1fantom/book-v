@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <title>5.2 Вычисление площади плоской фигуры в полярных координатах</title>
+  <link rel="stylesheet" href="../css/style.css"/>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js" async></script>
+  <style>
+    .content { 
+      max-width: 900px; 
+      margin: auto; 
+      padding: 20px; 
+      font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif; 
+      color: #2c3e50; 
+    }
+    section { 
+      background: #f9f9f9; 
+      border: 1px solid #ddd; 
+      border-radius: 8px; 
+      padding: 25px; 
+      margin-bottom: 25px; 
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1); 
+    }
+    h2, h3 { 
+      text-align: center; 
+      margin-bottom: 1.2em; 
+      color: #2a2a2b; 
+    }
+    p, ul { 
+      line-height: 1.6; 
+      font-size: 1.1rem; 
+      margin-bottom: 1.2em; 
+    }
+    ul { 
+      margin-left: 24px; 
+    }
+    .formula { 
+      text-align: center; 
+      margin: 1.2em 0; 
+      font-size: 1.4rem; 
+      color: #404040; 
+      font-weight: 500; 
+    }
+    .example { 
+      background-color: #e9f0ff; 
+      border-left: 6px solid #5a7edc; 
+      padding: 15px 20px; 
+      margin-top: 15px; 
+      font-style: italic; 
+    }
+    .btn-back { 
+      display: inline-block; 
+      padding: 14px 30px; 
+      font-size: 1.1rem; 
+      color: #222; 
+      background-color: #b0b0b0; 
+      border: none; 
+      border-radius: 10px; 
+      cursor: pointer; 
+      text-decoration: none; 
+      box-shadow: 0 5px 10px rgba(150,150,150,0.4); 
+      transition: background-color 0.3s ease; 
+      user-select: none; 
+      margin-top: 35px; 
+    }
+    .btn-back:hover { 
+      background-color: #999; 
+      color: #111; 
+    }
+  </style>
+</head>
+<body>
+  <div id="header-placeholder"></div>
+  <main class="content" aria-label="Вычисление площади плоской фигуры в полярных координатах">
+    <h2>5.2 Вычисление площади плоской фигуры в полярных координатах</h2>
+
+    <section>
+      <h3>Общее описание</h3>
+      <p>
+        Площадь плоской фигуры, заданной в полярных координатах радиусом-вектором \( r = r(\theta) \), вычисляется по формуле:
+      </p>
+      <div class="formula">
+        \[
+          S = \frac{1}{2} \int_{\alpha}^{\beta} r^2(\theta) \, d\theta
+        \]
+      </div>
+      <p>
+        Здесь \( \alpha \) и \( \beta \) — углы, задающие промежуток обхода фигуры по полярной координате.
+      </p>
+    </section>
+
+    <section>
+      <h3>Пояснение</h3>
+      <p>
+        Формула основана на разбиении фигуры на узкие сектора с центральным углом \( d\theta \). Площадь каждого сектора приближённо равна площади круга с радиусом \( r(\theta) \) и углом \( d\theta \).
+      </p>
+    </section>
+
+    <section>
+      <h3>Пример</h3>
+      <p>
+        Рассмотрим фигуру, заданную в полярных координатах радиусом \( r(\theta) = 2 \cos \theta \) при \( \theta \in [0, \pi/2] \).
+      </p>
+      <p>
+        Найдём площадь:
+      </p>
+      <div class="formula">
+        \[
+          S = \frac{1}{2} \int_0^{\pi/2} (2 \cos \theta)^2 \, d\theta = 2 \int_0^{\pi/2} \cos^2 \theta \, d\theta
+        \]
+      </div>
+      <p>
+        Используя формулу \( \cos^2 \theta = \frac{1 + \cos 2\theta}{2} \), получаем:
+      </p>
+      <div class="formula">
+        \[
+          S = 2 \int_0^{\pi/2} \frac{1 + \cos 2\theta}{2} \, d\theta = \int_0^{\pi/2} (1 + \cos 2\theta) \, d\theta
+        \]
+      </div>
+      <p>
+        Интегрируем и вычисляем:
+      </p>
+      <div class="formula">
+        \[
+          S = \left.\left(\theta + \frac{\sin 2\theta}{2}\right)\right|_0^{\pi/2} = \frac{\pi}{2} + 0 = \frac{\pi}{2}
+        \]
+      </div>
+    </section>
+
+    <section>
+      <h3>Значение метода</h3>
+      <p>
+        Вычисление площади в полярных координатах удобно для фигур, задаваемых радиусом-вектором, особенно при наличии симметрий и кривых, сложных для описания в декартовой системе.
+      </p>
+    </section>
+
+    <div style="text-align:center;">
+      <a href="../p_integral.html" class="btn-back" role="button" aria-label="К списку разделов">К списку разделов</a>
+    </div>
+  </main>
+
+  <script>
+    fetch('../header.html').then(r => r.ok ? r.text() : Promise.reject())
+      .then(html => {
+        document.getElementById('header-placeholder').innerHTML = html;
+        if (window.MathJax) {
+          MathJax.typesetPromise();
+        }
+      })
+      .catch(() => {
+        document.getElementById('header-placeholder').innerHTML = '<p style="color:red;text-align:center">Ошибка загрузки шапки</p>';
+      });
+  </script>
+  <script src="../js/menuToggle.js" defer></script>
+</body>
+</html>

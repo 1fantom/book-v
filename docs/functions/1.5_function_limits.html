@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <title>1.5 Предел функции и его свойства — Математический анализ</title>
+  <link rel="stylesheet" href="../css/style.css"/>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js" async></script>
+  <style>
+    .content { max-width: 900px; margin: auto; padding: 20px; }
+    section {
+      background: #f9f9f9; border:1px solid #ddd; border-radius:8px;
+      padding:20px; margin-bottom:20px; box-shadow:0 2px 5px rgba(0,0,0,0.1);
+    }
+    h2, h3 { text-align:center; color:#2c3e50; margin-bottom:0.5em; }
+    ul { margin-left:1.5em; }
+    .formula { text-align:center; margin:1em 0; font-size:1.1em; }
+    /* Кнопка назад */
+    .btn-back {
+      display: block;
+      width: max-content;
+      margin: 30px auto 0 auto;
+      padding: 12px 28px;
+      font-size: 1rem;
+      color: #222;
+      background-color: #b0b0b0;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      text-decoration: none;
+      text-align: center;
+      box-shadow: 0 4px 8px rgba(150, 150, 150, 0.4);
+      transition: background-color 0.3s ease;
+      user-select: none;
+    }
+    .btn-back:hover, .btn-back:focus {
+      background-color: #999999;
+      outline: none;
+      color: #111;
+    }
+  </style>
+</head>
+<body>
+
+  <div id="header-placeholder"></div>
+
+  <main class="content" tabindex="-1" role="main" aria-label="Предел функции и его свойства">
+    <h2>1.5 Предел функции и его свойства</h2>
+
+    <section>
+      <h3>Определение предела функции</h3>
+      <p>
+        Говорят, что <strong>предел функции</strong> \(f(x)\) при \(x \to x_0\) равен \(L\), если значения функции \(f(x)\) стремятся к числу \(L\) при приближении \(x\) к \(x_0\).
+      </p>
+      <div class="formula">
+        \( \lim_{x \to x_0} f(x) = L \)
+      </div>
+      <p>
+        Это означает, что для любого \( \varepsilon > 0 \) найдётся такое \( \delta > 0 \), что при всех \( x \), удовлетворяющих неравенству \( 0 < |x - x_0| < \delta \), выполняется:
+      </p>
+      <div class="formula">
+        \( |f(x) - L| < \varepsilon \)
+      </div>
+    </section>
+
+    <section>
+      <h3>Односторонние пределы</h3>
+      <p>
+        Существует <strong>левый предел</strong> (при \(x \to x_0^-\)) и <strong>правый предел</strong> (при \(x \to x_0^+\)). Обычный предел существует тогда и только тогда, когда левый и правый пределы равны.
+      </p>
+    </section>
+
+    <section>
+        <h3>Свойства пределов</h3>
+            <p>Пределы функций обладают рядом важных свойств, которые позволяют вычислять пределы сложных выражений, используя пределы простых компонентов.</p>
+
+        <ul>
+            <li>
+            <strong>Сумма и разность:</strong><br/>
+            Если существуют пределы функций \(f(x)\) и \(g(x)\) при \(x \to a\), то предел суммы и разности равен сумме и разности пределов соответственно:
+            <div class="formula">
+                \(\displaystyle \lim_{x \to a} [f(x) \pm g(x)] = \lim_{x \to a} f(x) \pm \lim_{x \to a} g(x)\)
+            </div>
+            <p>Например, если \(\lim_{x \to 2} f(x) = 3\) и \(\lim_{x \to 2} g(x) = 5\), то:</p>
+            <div class="formula">
+                \(\lim_{x \to 2} [f(x) + g(x)] = 3 + 5 = 8\)
+            </div>
+            </li>
+
+            <li>
+            <strong>Произведение:</strong><br/>
+            Предел произведения равен произведению пределов:
+            <div class="formula">
+                \(\displaystyle \lim_{x \to a} [f(x) \cdot g(x)] = \lim_{x \to a} f(x) \cdot \lim_{x \to a} g(x)\)
+            </div>
+            <p>Например, если \(\lim_{x \to 1} f(x) = 4\) и \(\lim_{x \to 1} g(x) = 2\), то:</p>
+            <div class="formula">
+                \(\lim_{x \to 1} [f(x) \cdot g(x)] = 4 \cdot 2 = 8\)
+            </div>
+            </li>
+
+            <li>
+            <strong>Частное:</strong><br/>
+            Если \(\lim_{x \to a} g(x) \neq 0\), то предел частного равен частному пределов:
+            <div class="formula">
+                \(\displaystyle \lim_{x \to a} \frac{f(x)}{g(x)} = \frac{\lim_{x \to a} f(x)}{\lim_{x \to a} g(x)}\)
+            </div>
+            <p>Важно: знаменатель не должен стремиться к нулю, иначе выражение может быть неопределённым.</p>
+            <p>Например, если \(\lim_{x \to 3} f(x) = 9\), а \(\lim_{x \to 3} g(x) = 3\), то:</p>
+            <div class="formula">
+                \(\lim_{x \to 3} \frac{f(x)}{g(x)} = \frac{9}{3} = 3\)
+            </div>
+            </li>
+
+            <li>
+            <strong>Предел константы, умноженной на функцию:</strong><br/>
+            Предел произведения константы \(c\) и функции равен произведению константы на предел функции:
+            <div class="formula">
+                \(\displaystyle \lim_{x \to a} [c \cdot f(x)] = c \cdot \lim_{x \to a} f(x)\)
+            </div>
+            <p>Например, если \(\lim_{x \to 5} f(x) = 7\) и \(c = 3\), то:</p>
+            <div class="formula">
+                \(\lim_{x \to 5} 3f(x) = 3 \cdot 7 = 21\)
+            </div>
+            </li>
+
+            <li>
+            <strong>Предел степени функции:</strong><br/>
+            Если \(\lim_{x \to a} f(x) = L\), то для любого целого числа \(n > 0\) верно:
+            <div class="formula">
+                \(\displaystyle \lim_{x \to a} [f(x)]^n = L^n\)
+            </div>
+            <p>Например, если \(\lim_{x \to 2} f(x) = 3\), то:</p>
+            <div class="formula">
+                \(\lim_{x \to 2} [f(x)]^4 = 3^4 = 81\)
+            </div>
+            </li>
+
+            <li>
+            <strong>Предел корня функции:</strong><br/>
+            Если \(\lim_{x \to a} f(x) = L \geq 0\), то для любого \(n\)-го корня верно:
+            <div class="formula">
+                \(\displaystyle \lim_{x \to a} \sqrt[n]{f(x)} = \sqrt[n]{L}\)
+            </div>
+            <p>Например, если \(\lim_{x \to 4} f(x) = 9\), то:</p>
+            <div class="formula">
+                \(\lim_{x \to 4} \sqrt{f(x)} = \sqrt{9} = 3\)
+            </div>
+            </li>
+
+        </ul>
+    </section>
+
+
+    <section>
+  <h3>Примеры</h3>
+  <ul>
+    <li>
+      <p>\( \lim_{x \to 2} (3x + 1) = 7 \)</p>
+      <p><em>Объяснение:</em> Подставим \(x = 2\) в функцию \(3x + 1\):</p>
+      <div class="formula" style="font-size:1rem;">
+        \(3 \cdot 2 + 1 = 6 + 1 = 7\)
+      </div>
+      <p>Поскольку функция \(3x + 1\) — линейная и непрерывная, предел при \(x \to 2\) равен значению функции в точке \(x = 2\).</p>
+    </li>
+
+    <li>
+      <p>\( \lim_{x \to 0} \sin x = 0 \)</p>
+      <p><em>Объяснение:</em> Значение синуса стремится к нулю, когда аргумент \(x\) стремится к нулю. Это классический и известный предел из тригонометрии.</p>
+      <div class="formula" style="font-size:1rem;">
+        \(\sin 0 = 0\)
+      </div>
+      <p>График функции \(y = \sin x\) непрерывен, поэтому предел равен значению функции в точке.</p>
+    </li>
+
+    <li>
+      <p>\( \lim_{x \to \infty} \dfrac{1}{x} = 0 \)</p>
+      <p><em>Объяснение:</em> Чем больше становится \(x\), тем ближе дробь \(\frac{1}{x}\) к нулю, ведь знаменатель растёт безгранично.</p>
+      <div class="formula" style="font-size:1rem;">
+        \text{При } x = 10: \frac{1}{10} = 0.1; \quad x=100: \frac{1}{100} = 0.01; \quad x=1000: \frac{1}{1000} = 0.001
+      </div>
+      <p>Таким образом, при стремлении \(x\) к бесконечности значение функции стремится к нулю.</p>
+    </li>
+  </ul>
+</section>
+
+
+    <section>
+      <h3>Пределы на бесконечности</h3>
+      <p>
+        Если функция стремится к какому-то числу при неограниченном увеличении \(x\), то говорят о пределе на бесконечности:
+      </p>
+      <div class="formula">
+        \( \lim_{x \to \infty} f(x) = L \)
+      </div>
+      <p>Пример: \( \lim_{x \to \infty} \dfrac{5x + 1}{x + 2} = 5 \)</p>
+    </section>
+
+    <a href="../limits.html" class="btn-back" role="button" aria-label="Перейти к разделу о пределах">
+      Перейти к разделу о пределах
+    </a>
+  </main>
+
+  <script>
+    fetch('../header.html')
+      .then(response => response.text())
+      .then(html => {
+        document.getElementById('header-placeholder').innerHTML = html;
+      })
+      .catch(() => {
+        document.getElementById('header-placeholder').innerHTML = '<p style="color:red; text-align:center;">Ошибка загрузки шапки и меню</p>';
+      });
+  </script>
+  <script src="../js/menuToggle.js" defer></script>
+</body>
+</html>

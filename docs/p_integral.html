@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <title>5. Приложения определённого интеграла — Математический анализ</title>
+  <link rel="stylesheet" href="css/style.css"/>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js" async></script>
+  <style>
+    .content {
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 20px;
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+    .section-card {
+      background: #f9f9f9;
+      border: 1px solid #ddd;
+      border-radius: 10px;
+      padding: 20px 25px;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+      transition: transform 0.3s, box-shadow 0.3s;
+    }
+    .section-card:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 6px 15px rgba(0,0,0,0.15);
+    }
+    .section-card h3 {
+      margin: 0 0 10px;
+      font-size: 1.4rem;
+      color: #2c3e50;
+    }
+    .section-card p {
+      margin: 0 0 15px;
+      color: #555;
+      line-height: 1.4;
+    }
+    .btn-more {
+      display: inline-block;
+      background-color: #444;
+      color: #fff;
+      border: none;
+      border-radius: 6px;
+      padding: 8px 16px;
+      font-size: 0.95rem;
+      font-weight: 600;
+      cursor: pointer;
+      text-decoration: none;
+      transition: background-color 0.3s, box-shadow 0.2s;
+    }
+    .btn-more:hover {
+      background-color: #222;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+    }
+    h2 {
+      text-align: center;
+      margin-bottom: 30px;
+      color: #212529;
+      font-size: 2.5rem;
+      font-weight: 700;
+      text-shadow: 1px 1px 2px rgba(0,0,0,0.1);
+    }
+  </style>
+</head>
+<body>
+
+  <div id="header-placeholder"></div>
+
+  <main class="content" tabindex="-1">
+    <h2>5. Приложения определённого интеграла</h2>
+
+    <div class="section-card">
+      <h3><a href="functions/5.1.html">5.1 Вычисление площади плоской фигуры в декартовых координатах</a></h3>
+      <p>Метод вычисления площади фигуры с помощью определённого интеграла по оси X или Y.</p>
+      <a href="functions/5.1.html" class="btn-more">Перейти</a>
+    </div>
+
+    <div class="section-card">
+      <h3><a href="functions/5.2.html">5.2 Вычисление площади плоской фигуры в полярных координатах</a></h3>
+      <p>Использование интеграла для площади в полярной системе координат.</p>
+      <a href="functions/5.2.html" class="btn-more">Перейти</a>
+    </div>
+
+    <div class="section-card">
+      <h3><a href="functions/5.3.html">5.3 Вычисление объёма тела</a></h3>
+      <p>Применение определённого интеграла для нахождения объёма вращения и других тел.</p>
+      <a href="functions/5.3.html" class="btn-more">Перейти</a>
+    </div>
+
+    <div class="section-card">
+      <h3><a href="functions/5.4.html">5.4 Вычисление длины дуги</a></h3>
+      <p>Формулы и методы для вычисления длины кривой на заданном промежутке.</p>
+      <a href="functions/5.4.html" class="btn-more">Перейти</a>
+    </div>
+
+    <div class="section-card">
+      <h3><a href="functions/5.5.html">5.5 Вычисление площади поверхности вращения</a></h3>
+      <p>Использование интеграла для площади поверхности, полученной вращением кривой.</p>
+      <a href="functions/5.5.html" class="btn-more">Перейти</a>
+    </div>
+
+    <div class="section-card">
+      <h3><a href="functions/5.6.html">5.6 Применение определённого интеграла к физическим задачам</a></h3>
+      <p>Примеры использования интегралов в механике, электричестве и других областях.</p>
+      <a href="functions/5.6.html" class="btn-more">Перейти</a>
+    </div>
+
+    <div class="section-card">
+      <h3><a href="functions/5.7.html">5.7 Формулы трапеций для приближенного интегрирования</a></h3>
+      <p>Численные методы приближённого вычисления интегралов с помощью трапеций.</p>
+      <a href="functions/5.7.html" class="btn-more">Перейти</a>
+    </div>
+
+    <div class="section-card">
+      <h3><a href="functions/5.8.html">5.8 Формула Симпсона для приближенного интегрирования</a></h3>
+      <p>Метод Симпсона для более точного приближенного вычисления интегралов.</p>
+      <a href="functions/5.8.html" class="btn-more">Перейти</a>
+    </div>
+
+  </main>
+
+  <script>
+    fetch('header.html')
+      .then(response => response.text())
+      .then(html => {
+        document.getElementById('header-placeholder').innerHTML = html;
+      })
+      .catch(() => {
+        document.getElementById('header-placeholder').innerHTML = '<p>Ошибка загрузки шапки и меню</p>';
+      });
+  </script>
+  <script src="js/menuToggle.js" defer></script>
+
+</body>
+</html>

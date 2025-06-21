@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <title>5.5 Вычисление площади поверхности вращения</title>
+  <link rel="stylesheet" href="../css/style.css"/>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js" async></script>
+  <style>
+    .content { 
+      max-width: 900px; 
+      margin: auto; 
+      padding: 20px; 
+      font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif; 
+      color: #2c3e50; 
+    }
+    section { 
+      background: #f9f9f9; 
+      border: 1px solid #ddd; 
+      border-radius: 8px; 
+      padding: 25px; 
+      margin-bottom: 25px; 
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1); 
+    }
+    h2, h3 { 
+      text-align: center; 
+      margin-bottom: 1.2em; 
+      color: #2a2a2b; 
+    }
+    p, ul { 
+      line-height: 1.6; 
+      font-size: 1.1rem; 
+      margin-bottom: 1.2em; 
+    }
+    ul { 
+      margin-left: 24px; 
+    }
+    .formula { 
+      text-align: center; 
+      margin: 1.2em 0; 
+      font-size: 1.4rem; 
+      color: #404040; 
+      font-weight: 500; 
+    }
+    .example { 
+      background-color: #e9f0ff; 
+      border-left: 6px solid #5a7edc; 
+      padding: 15px 20px; 
+      margin-top: 15px; 
+      font-style: italic; 
+    }
+    .btn-back { 
+      display: inline-block; 
+      padding: 14px 30px; 
+      font-size: 1.1rem; 
+      color: #222; 
+      background-color: #b0b0b0; 
+      border: none; 
+      border-radius: 10px; 
+      cursor: pointer; 
+      text-decoration: none; 
+      box-shadow: 0 5px 10px rgba(150,150,150,0.4); 
+      transition: background-color 0.3s ease; 
+      user-select: none; 
+      margin-top: 35px; 
+    }
+    .btn-back:hover { 
+      background-color: #999; 
+      color: #111; 
+    }
+  </style>
+</head>
+<body>
+  <div id="header-placeholder"></div>
+  <main class="content" aria-label="Вычисление площади поверхности вращения">
+    <h2>5.5 Вычисление площади поверхности вращения</h2>
+
+    <section>
+      <h3>Понятие поверхности вращения</h3>
+      <p>
+        Поверхность вращения образуется при вращении кривой вокруг оси.  
+        Вычисление площади такой поверхности важно в геометрии, физике и инженерии.
+      </p>
+    </section>
+
+    <section>
+      <h3>Формула площади поверхности вращения вокруг оси Ox</h3>
+      <p>
+        Если кривая задана функцией \( y = f(x) \), непрерывной и дифференцируемой на отрезке \([a, b]\),  
+        площадь поверхности вращения вокруг оси Ox выражается интегралом:
+      </p>
+      <div class="formula">
+        \[
+          S = 2 \pi \int_a^b f(x) \sqrt{1 + \left(f'(x)\right)^2} \, dx.
+        \]
+      </div>
+    </section>
+
+    <section>
+      <h3>Формула площади поверхности вращения вокруг оси Oy</h3>
+      <p>
+        Если кривая задана функцией \( x = g(y) \), непрерывной и дифференцируемой на \([c, d]\),  
+        площадь поверхности вращения вокруг оси Oy вычисляется как:
+      </p>
+      <div class="formula">
+        \[
+          S = 2 \pi \int_c^d g(y) \sqrt{1 + \left(g'(y)\right)^2} \, dy.
+        \]
+      </div>
+    </section>
+
+    <section>
+      <h3>Пример</h3>
+      <p>
+        Рассмотрим функцию \( y = \sqrt{x} \) на отрезке \([0, 4]\).  
+        Найдём площадь поверхности, образованной вращением графика вокруг оси Ox.
+      </p>
+      <div class="formula">
+        \[
+          f'(x) = \frac{1}{2\sqrt{x}}, \quad S = 2 \pi \int_0^4 \sqrt{x} \sqrt{1 + \frac{1}{4x}} \, dx = 2 \pi \int_0^4 \sqrt{x + \frac{1}{4}} \, dx.
+        \]
+      </div>
+      <p>
+        Решение этого интеграла даёт искомую площадь.
+      </p>
+    </section>
+
+    <section>
+      <h3>Значение задачи</h3>
+      <p>
+        Вычисление площади поверхности вращения помогает решать задачи в инженерии,  
+        где важно учитывать площадь контакта или покрытия объектов с криволинейной формой.
+      </p>
+    </section>
+
+    <div style="text-align:center;">
+      <a href="../p_integral.html" class="btn-back" role="button" aria-label="К списку разделов">К списку разделов</a>
+    </div>
+  </main>
+
+  <script>
+    fetch('../header.html').then(r => r.ok ? r.text() : Promise.reject())
+      .then(html => {
+        document.getElementById('header-placeholder').innerHTML = html;
+        if (window.MathJax) {
+          MathJax.typesetPromise();
+        }
+      })
+      .catch(() => {
+        document.getElementById('header-placeholder').innerHTML = '<p style="color:red;text-align:center">Ошибка загрузки шапки</p>';
+      });
+  </script>
+  <script src="../js/menuToggle.js" defer></script>
+</body>
+</html>

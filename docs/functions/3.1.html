@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <title>3.1 Неопределенный интеграл и его свойства</title>
+  <link rel="stylesheet" href="../css/style.css"/>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js" async></script>
+  <style>
+    .content { max-width: 900px; margin: auto; padding: 20px; font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif; color: #2c3e50; }
+    section { background: #f9f9f9; border: 1px solid #ddd; border-radius: 8px; padding: 20px; margin-bottom: 20px; box-shadow: 0 2px 5px rgba(0,0,0,0.1); }
+    h2, h3 { text-align: center; margin-bottom: 1em; color: #2a2a2b; }
+    p, ul { line-height: 1.6; font-size: 1.05rem; margin-bottom: 1em; }
+    ul { margin-left: 20px; }
+    .formula { text-align: center; margin: 1em 0; font-size: 1.3rem; color: #404040; font-weight: 500; }
+    .btn-back { display: inline-block; padding: 12px 28px; font-size: 1rem; color: #222; background-color: #b0b0b0; border: none; border-radius: 8px; cursor: pointer; text-decoration: none; box-shadow: 0 4px 8px rgba(150,150,150,0.4); transition: background-color 0.3s ease; user-select: none; margin-top: 30px; }
+    .btn-back:hover { background-color: #999; color: #111; }
+  </style>
+</head>
+<body>
+  <div id="header-placeholder"></div>
+  <main class="content" aria-label="Неопределенный интеграл и его свойства">
+    <h2>3.1 Неопределенный интеграл и его свойства</h2>
+    
+    <section>
+      <h3>Понятие неопределённого интеграла</h3>
+      <p>
+        Неопределённый интеграл — это одно из фундаментальных понятий математического анализа, тесно связанное с понятием первообразной функции. Для заданной функции \(f(x)\) неопределённым интегралом называется множество всех её первообразных, то есть всех таких функций \(F(x)\), что производная \(F'(x)\) совпадает с исходной функцией \(f(x)\).
+      </p>
+      <p>
+        Записывается неопределённый интеграл так:
+      </p>
+      <div class="formula">
+        \(\displaystyle \int f(x)\,dx = F(x) + C\),
+      </div>
+      <p>
+        где \(F(x)\) — первообразная функции \(f(x)\), а \(C\) — произвольная постоянная интегрирования, учитывающая все сдвиги графика \(F(x)\) по вертикали.
+      </p>
+    </section>
+
+    <section>
+      <h3>Геометрический смысл</h3>
+      <p>
+        Геометрически неопределённый интеграл можно представить как семейство кривых, наклон касательных к которым в каждой точке равен значению функции \(f(x)\) в этой точке. Иными словами, если график функции \(f(x)\) задаёт скорость изменения величины, то графики всех функций \(F(x) + C\) показывают величины, меняющиеся с этой скоростью.
+      </p>
+    </section>
+
+    <section>
+      <h3>Основные свойства неопределённого интеграла</h3>
+      <p>Неопределённый интеграл обладает важными свойствами, которые существенно облегчают вычисления и анализ функций.</p>
+      <ul>
+        <li><strong>Линейность:</strong> Интеграл от суммы функций равен сумме интегралов, а константу можно вынести за знак интеграла:
+          <div class="formula">\(\displaystyle \int [a f(x) + b g(x)]\,dx = a \int f(x)\,dx + b \int g(x)\,dx\), где \(a,b\) — константы.</div>
+        </li>
+        <li><strong>Интеграл константы:</strong> Интеграл от постоянной функции равен произведению этой константы на переменную интегрирования:
+          <div class="formula">\(\displaystyle \int c\,dx = cx + C\), где \(c\) — постоянное число.</div>
+        </li>
+        <li><strong>Сдвиг аргумента:</strong> При сдвиге функции вдоль оси \(x\), неопределённый интеграл изменяется аналогично:
+          <div class="formula">\(\displaystyle \int f(x+a)\,dx = F(x+a) + C\).</div>
+        </li>
+        <li><strong>Производная интеграла:</strong> Производная первообразной возвращает исходную функцию:
+          <div class="formula">\(\displaystyle \frac{d}{dx}\int f(x)\,dx = f(x)\).</div>
+        </li>
+      </ul>
+    </section>
+
+    <section>
+      <h3>Связь с определённым интегралом</h3>
+      <p>
+        Неопределённый интеграл тесно связан с определённым интегралом, который вычисляет площадь под графиком функции на заданном интервале. Если \(F(x)\) — первообразная \(f(x)\), то по формуле Ньютона-Лейбница:
+      </p>
+      <div class="formula">
+        \(\displaystyle \int_a^b f(x)\,dx = F(b) - F(a)\).
+      </div>
+      <p>
+        Это связывает вычисление площадей с поиском первообразных и подчёркивает важность изучения неопределённых интегралов.
+      </p>
+    </section>
+
+    <section>
+      <h3>Примеры первообразных</h3>
+      <ul>
+        <li>Если \(f(x) = x^n\), где \(n \neq -1\), то
+          <div class="formula">\(\displaystyle \int x^n\,dx = \frac{x^{n+1}}{n+1} + C\).</div>
+        </li>
+        <li>Для функции \(f(x) = \frac{1}{x}\) (при \(x \neq 0\)):
+          <div class="formula">\(\displaystyle \int \frac{1}{x} \, dx = \ln|x| + C\).</div>
+        </li>
+        <li>Для тригонометрических функций, например, \(f(x) = \cos x\):
+          <div class="formula">\(\displaystyle \int \cos x\, dx = \sin x + C\).</div>
+        </li>
+      </ul>
+    </section>
+
+    <div style="text-align:center;">
+      <a href="../integrals.html" class="btn-back" role="button" aria-label="К списку разделов">
+        К списку разделов
+      </a>
+    </div>
+  </main>
+  <script>
+    fetch('../header.html').then(r=>r.ok?r.text():Promise.reject())
+      .then(html=>document.getElementById('header-placeholder').innerHTML=html)
+      .catch(()=>document.getElementById('header-placeholder').innerHTML='<p style="color:red;text-align:center">Ошибка загрузки шапки</p>');
+  </script>
+  <script src="../js/menuToggle.js" defer></script>
+</body>
+</html>

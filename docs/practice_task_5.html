@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>5. Приложения определённого интеграла</title>
+  <link rel="stylesheet" href="css/style.css" />
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js" async></script>
+  <style>
+    .content {
+      max-width: 900px;
+      margin: 30px auto;
+      padding: 20px;
+      font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+      color: #2c3e50;
+      line-height: 1.6;
+    }
+    h1, h2, h3 {
+      text-align: center;
+      color: #2a2a2b;
+      margin-bottom: 1em;
+    }
+    p {
+      font-size: 1.1rem;
+      margin-bottom: 1.2em;
+    }
+    .intro {
+      background: #f9f9f9;
+      padding: 20px;
+      border-radius: 10px;
+      border: 1px solid #ddd;
+      margin-bottom: 25px;
+    }
+    .exercise {
+      background: #f1f1f1;
+      padding: 18px 20px;
+      border-left: 4px solid #555;
+      border-radius: 8px;
+      margin-bottom: 25px;
+    }
+    .solution {
+      background-color: #fff;
+      padding: 15px 20px;
+      border-radius: 6px;
+      border: 1px solid #ccc;
+      margin-top: 10px;
+      display: none;
+    }
+    .btn-solution {
+      display: inline-block;
+      margin-top: 10px;
+      padding: 8px 16px;
+      background-color: #4a4a4a;
+      color: white;
+      border-radius: 6px;
+      text-decoration: none;
+      font-weight: 600;
+      transition: background-color 0.3s ease;
+      cursor: pointer;
+    }
+    .btn-solution:hover {
+      background-color: #2a2a2a;
+    }
+  </style>
+</head>
+<body>
+  <div id="header-placeholder"></div>
+
+  <main class="content" aria-label="Приложения определённого интеграла">
+    <h1>5. Приложения определённого интеграла</h1>
+
+    <section class="intro">
+      <p>
+        В этом разделе рассмотрим практические задачи по приложениям определённого интеграла: 
+        вычисление площадей, объёмов, длин дуг и других физических величин.
+      </p>
+      <p>
+        Ниже предложено 5 случайных задач для практики. Нажмите «Показать решение», чтобы увидеть ход вычислений и ответ.
+      </p>
+    </section>
+
+    <div id="tasks-container">
+      <!-- Здесь будут отображаться задачи -->
+    </div>
+  </main>
+
+  <script>
+    // База из 50 задач по приложениям интеграла
+    const tasks = [
+  { "question": "Найти площадь фигуры между графиками y = x и y = x² на [0,1]",  
+    "answer": "\\(S=\\int_0^1(x - x²)dx=\\tfrac{1}{6}\\)" },
+  { "question": "Вычислить объём тела вращения фигуры y=√x вокруг Ox на [0,4]",  
+    "answer": "\\(V=\\pi\\int_0^4(\\sqrt{x})²dx=8\\pi\\)" },
+  { "question": "Найти длину дуги y=ln(x) на [1,e]",  
+    "answer": "\\(L=\\int_1^e\\sqrt{1+1/x²}\\,dx\\)" },
+  { "question": "Площадь поверхности вращения y=x² вокруг Ox на [0,1]",  
+    "answer": "\\(S=2\\pi\\int_0^1x²\\sqrt{1+(2x)²}\\,dx\\)" },
+  { "question": "Работа силы F(x)=kx при перемещении от 0 до a",  
+    "answer": "\\(A=\\int_0^a kx\\,dx=\\tfrac{ka²}{2}\\)" },
+  { "question": "Центр тяжести однородного стержня длины L от 0 до L",  
+    "answer": "\\(x_c=\\tfrac1L\\int_0^L x\,dx=\\tfrac{L}{2}\\)" },
+  { "question": "Площадь сектора r=2 sinθ в полярных координатах",  
+    "answer": "\\(S=\\tfrac12\\int_0^\\pi(2\\sin θ)²dθ=2\\pi\\)" },
+  { "question": "Объём цилиндрических оболочек y=x³ на [0,1] вращение вокруг Oy",  
+    "answer": "\\(V=2\\pi\\int_0^1 x·x³dx=\\tfrac{\\pi}{3}\\)" },
+  { "question": "Длина кривой r=a(1+cosθ) в полярных координатах",  
+    "answer": "\\(L=\\int_0^{2\\pi}\\sqrt{r²+(dr/dθ)²}\\,dθ\\)" },
+  { "question": "Момент инерции стержня от 0 до L относительно одного конца",  
+    "answer": "\\(I=\\int_0^L x²dm=\\tfrac{mL²}{3}\\)" },
+  { "question": "Площадь плоской фигуры y=sin x на [0,π]",  
+    "answer": "\\(S=\\int_0^π\\sin x\,dx=2\\)" },
+  { "question": "Объём тела вращения y=cos x вокруг Ox на [0,π/2]",  
+    "answer": "\\(V=\\pi\\int_0^{π/2}\\cos²x\,dx=\\tfrac{π²}{8}+\\tfrac{π}{4}\\)" },
+  { "question": "Длина дуги y=x³ на [0,1]",  
+    "answer": "\\(L=\\int_0^1\\sqrt{1+(3x²)²}\\,dx\\)" },
+  { "question": "Площадь поверхности вращения y=√x вокруг Oy на [0,4]",  
+    "answer": "\\(S=2\\pi\\int_0^4 x\\sqrt{1+\\tfrac{1}{4x}}\\,dx\\)" },
+  { "question": "Работа переменного давления p(x)=p₀(1−x/h) на поверхности pistona",  
+    "answer": "\\(A=\\int_0^h p₀(1−x/h)A\\,dx=\\tfrac{p₀Ah}{2}\\)" },
+  { "question": "Центр масс плоской области под y=x² на [0,1]",  
+    "answer": "\\(\\bar y=\\tfrac{1}{S}\\int_0^1\\tfrac{x²}{2}x\,dx\\)" },
+  { "question": "Площадь сектора r=3θ в полярных на [0,π]",  
+    "answer": "\\(S=\\tfrac12\\int_0^π(3θ)²dθ=\\tfrac{9π³}{6}\\)" },
+  { "question": "Объём тела по методу перекрывающихся дисков y=1/x на [1,2]",  
+    "answer": "\\(V=\\pi\\int_1^2\\tfrac{1}{x²}dx=\\tfrac{π}{2}\\)" },
+  { "question": "Длина логарифмической спирали r=a e^{bθ}",  
+    "answer": "\\(L=\\int_{θ₁}^{θ₂}\\sqrt{r²+(dr/dθ)²}\\,dθ\\)" },
+  { "question": "Площадь поверхности вращения x=y² вокруг Oy на [0,1]",  
+    "answer": "\\(S=2\\pi\\int_0^1 y²\\sqrt{1+(2y)²}\\,dy\\)" },
+  { "question": "Работа поля тяжести F(x)=mg при подъёме от 0 до h",  
+    "answer": "\\(A=\\int_0^h mg\,dx=mgh\\)" },
+  { "question": "Центр масс стрижка от x^2 до x на [0,1]",  
+    "answer": "\\(x_c=\\tfrac{\\int_0^1 x(x−x²)dx}{\\int_0^1(x−x²)dx}\\)" },
+  { "question": "Площадь фигуры в полярных r=2+cosθ",  
+    "answer": "\\(S=\\tfrac12\\int_0^{2π}(2+\\cosθ)²dθ\\)" },
+  { "question": "Объём тела вращения y=sin x вокруг Oy на [0,π]",  
+    "answer": "\\(V=2\\pi\\int_0^π x\\sin x\,dx\\)" },
+  { "question": "Длина дуги x=cosh t, y=sinh t на [0,a]",  
+    "answer": "\\(L=\\int_0^a\\sqrt{\\sinh²t+\\cosh²t}\\,dt\\)" },
+  { "question": "Площадь поверхности вращения y=e^x вокруг Ox на [0,1]",  
+    "answer": "\\(S=2\\pi\\int_0^1e^x\\sqrt{1+e^{2x}}\\,dx\\)" },
+  { "question": "Работа силы F(x)=Ax² при движении от 0 до b",  
+    "answer": "\\(A=\\int_0^bAx²dx=\\tfrac{Ab³}{3}\\)" },
+  { "question": "Центр масс тонкого кольца плотности ρ(x)=ρ₀x",  
+    "answer": "\\(x_c=\\tfrac{\\int_0^R x·ρ₀x dx}{\\int_0^Rρ₀x dx}=\\tfrac{2R}{3}\\)" },
+  { "question": "Площадь сектора r=a(1+sinθ)",  
+    "answer": "\\(S=\\tfrac12\\int_0^{2π}a²(1+\\sinθ)²dθ\\)" },
+  { "question": "Объём по методу слоёв: y=√(R²−x²)",  
+    "answer": "\\(V=\\int_{-R}^{R}\\pi(R²−x²)dx=\\tfrac{4πR³}{3}\\)" },
+  { "question": "Длина ромба заданного параметрически x=a cos t, y=b sin t",  
+    "answer": "\\(L=4\\int_0^{π/2}\\sqrt{a²\\sin²t+b²\\cos²t}\\,dt\\)" },
+  { "question": "Площадь поверхности вращения x=a cosh(t) вокруг Ox",  
+    "answer": "\\(S=2\\pi\\int_{t_1}^{t_2}a cosh(t)\\sqrt{1+a²sinh²(t)}\\,dt\\)" },
+  { "question": "Работа силы упругости F(x)=kx при растяжении от 0 до X",  
+    "answer": "\\(A=\\int_0^Xkx\,dx=\\tfrac{kX²}{2}\\)" },
+  { "question": "Центр масс полигональной области через интеграл",  
+    "answer": "\\(x_c=\\tfrac{1}{Area}\\iint x\,dA\\)" },
+  { "question": "Площадь фигуры y=ln(x+1) на [0,1]",  
+    "answer": "\\(S=\\int_0^1\\ln(1+x)\,dx=2\\ln2-1\\)" },
+  { "question": "Объём тела вращения y=1/x вокруг Ox на [1,2]",  
+    "answer": "\\(V=\\pi\\int_1^2x^{-2}dx=\\tfrac{π}{2}\\)" },
+  { "question": "Длина спирали Архимеда r=aθ",  
+    "answer": "\\(L=\\int_0^{θ_0}\\sqrt{a²θ²+a²}\\,dθ\\)" },
+  { "question": "Площадь поверхности вращения y=1/x вокруг Oy",  
+    "answer": "\\(S=2\\pi\\int_1^2 x^{-1}\\sqrt{1+x^{-4}}\\,dx\\)" },
+  { "question": "Работа поля F(r)=kr при перемещении по радиусу",  
+    "answer": "\\(A=\\int_{r_1}^{r_2}kr\,dr=\\tfrac{k}{2}(r_2²−r_1²)\\)" },
+  { "question": "Центр масс линейной плотности ρ(x)=e^{−x/L}",  
+    "answer": "\\(x_c=\\tfrac{\\int_0^∞xe^{−x/L}dx}{\\int_0^∞e^{−x/L}dx}=L\\)" },
+  { "question": "Площадь фигуры y=arcsin(x) на [0,1]",  
+    "answer": "\\(S=\\int_0^1\\arcsin x\,dx\\)" },
+  { "question": "Объём тела вращения y=√(1−x²) вокруг Ox",  
+    "answer": "\\(V=\\pi\\int_{−1}^{1}(1−x²)dx=\\tfrac{4π}{3}\\)" },
+  { "question": "Длина дуги y=tan⁻¹(x) на [0,1]",  
+    "answer": "\\(L=\\int_0^1\\sqrt{1+1/(1+x²)²}\\,dx\\)" },
+  { "question": "Площадь поверхности вращения x=y² вокруг Oy",  
+    "answer": "\\(S=2\\pi\\int_0^1y²\\sqrt{1+4y²}\\,dy\\)" },
+  { "question": "Работа по сжатию газа pV^n=const",  
+    "answer": "\\(A=\\int_{V_1}^{V_2}p\,dV\\)" },
+  { "question": "Центр масс криволинейной дуги",  
+    "answer": "\\(x_c=\\tfrac{1}{L}\\int x\,ds\\)" },
+  { "question": "Площадь фигуры y=e^{−x²} на [0,∞)",  
+    "answer": "\\(S=\\int_0^∞e^{−x²}dx=\\tfrac{√π}{2}\\)" },
+  { "question": "Объём тела вращения y=x around Oy на [0,1]",  
+    "answer": "\\(V=2\\pi\\int_0^1x²dx=\\tfrac{2π}{3}\\)" },
+  { "question": "Длина эллиптической дуги x²/a²+y²/b²=1",  
+    "answer": "\\(L=4a\\int_0^{π/2}\\sqrt{1−e²sin²θ}\\,dθ\\)" },
+  { "question": "Площадь поверхности вращения y=a sin(x/a) вокруг Ox",  
+    "answer": "\\(S=2\\pi\\int_0^{πa}a sin(x/a)\\sqrt{1+cos²(x/a)}\\,dx\\)" },
+  { "question": "Работа силы сопротивления F(v)=kv²",  
+    "answer": "\\(A=\\int vkv²dt\\)" }
+];
+ 
+
+    function getRandomTasks(arr, n=5) {
+      const copy = [...arr];
+      const res = [];
+      for (let i = 0; i < n; i++) {
+        const idx = Math.floor(Math.random() * copy.length);
+        res.push(copy.splice(idx, 1)[0]);
+      }
+      return res;
+    }
+
+    function renderTasks() {
+      const container = document.getElementById('tasks-container');
+      container.innerHTML = '';
+      getRandomTasks(tasks).forEach(t => {
+        const sec = document.createElement('section');
+        sec.className = 'exercise';
+        sec.innerHTML = `
+          <p>${t.question}</p>
+          <button class="btn-solution" onclick="toggleSolution(this)">Показать решение</button>
+          <div class="solution">${t.answer}</div>
+        `;
+        container.appendChild(sec);
+      });
+      if (window.MathJax) MathJax.typesetPromise();
+    }
+
+    function toggleSolution(btn) {
+      const sol = btn.nextElementSibling;
+      const show = sol.style.display !== 'block';
+      sol.style.display = show ? 'block' : 'none';
+      btn.textContent = show ? 'Скрыть решение' : 'Показать решение';
+      if (window.MathJax) MathJax.typesetPromise([sol]);
+    }
+
+    document.addEventListener('DOMContentLoaded', () => {
+      renderTasks();
+      fetch('header.html')
+        .then(r => r.ok ? r.text() : Promise.reject())
+        .then(html => {
+          document.getElementById('header-placeholder').innerHTML = html;
+        })
+        .catch(() => {
+          document.getElementById('header-placeholder').innerHTML = '<p style="color:red; text-align:center;">Ошибка загрузки шапки</p>';
+        });
+    });
+  </script>
+
+  <script src="js/menuToggle.js" defer></script>
+</body>
+</html>

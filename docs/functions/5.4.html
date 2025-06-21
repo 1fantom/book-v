@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <title>5.4 Вычисление длины дуги</title>
+  <link rel="stylesheet" href="../css/style.css"/>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js" async></script>
+  <style>
+    .content { 
+      max-width: 900px; 
+      margin: auto; 
+      padding: 20px; 
+      font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif; 
+      color: #2c3e50; 
+    }
+    section { 
+      background: #f9f9f9; 
+      border: 1px solid #ddd; 
+      border-radius: 8px; 
+      padding: 25px; 
+      margin-bottom: 25px; 
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1); 
+    }
+    h2, h3 { 
+      text-align: center; 
+      margin-bottom: 1.2em; 
+      color: #2a2a2b; 
+    }
+    p, ul { 
+      line-height: 1.6; 
+      font-size: 1.1rem; 
+      margin-bottom: 1.2em; 
+    }
+    ul { 
+      margin-left: 24px; 
+    }
+    .formula { 
+      text-align: center; 
+      margin: 1.2em 0; 
+      font-size: 1.4rem; 
+      color: #404040; 
+      font-weight: 500; 
+    }
+    .example { 
+      background-color: #e9f0ff; 
+      border-left: 6px solid #5a7edc; 
+      padding: 15px 20px; 
+      margin-top: 15px; 
+      font-style: italic; 
+    }
+    .btn-back { 
+      display: inline-block; 
+      padding: 14px 30px; 
+      font-size: 1.1rem; 
+      color: #222; 
+      background-color: #b0b0b0; 
+      border: none; 
+      border-radius: 10px; 
+      cursor: pointer; 
+      text-decoration: none; 
+      box-shadow: 0 5px 10px rgba(150,150,150,0.4); 
+      transition: background-color 0.3s ease; 
+      user-select: none; 
+      margin-top: 35px; 
+    }
+    .btn-back:hover { 
+      background-color: #999; 
+      color: #111; 
+    }
+  </style>
+</head>
+<body>
+  <div id="header-placeholder"></div>
+  <main class="content" aria-label="Вычисление длины дуги">
+    <h2>5.4 Вычисление длины дуги</h2>
+
+    <section>
+      <h3>Определение длины дуги кривой</h3>
+      <p>
+        Длина дуги кривой — это мера её протяжённости между двумя точками на кривой.  
+        Для гладкой функции \( y = f(x) \), определённой на отрезке \([a, b]\), длина дуги вычисляется с помощью определённого интеграла.
+      </p>
+    </section>
+
+    <section>
+      <h3>Формула длины дуги</h3>
+      <p>
+        Формула длины дуги кривой \( y = f(x) \) при \( x \in [a, b] \):
+      </p>
+      <div class="formula">
+        \[
+          L = \int_a^b \sqrt{1 + \left(f'(x)\right)^2} \, dx.
+        \]
+      </div>
+      <p>
+        Здесь \( f'(x) \) — производная функции \( f(x) \).
+      </p>
+    </section>
+
+    <section>
+      <h3>Длина дуги в параметрической форме</h3>
+      <p>
+        Если кривая задана параметрически: \( x = x(t), y = y(t), t \in [\alpha, \beta] \),  
+        длина дуги выражается формулой:
+      </p>
+      <div class="formula">
+        \[
+          L = \int_\alpha^\beta \sqrt{\left(\frac{dx}{dt}\right)^2 + \left(\frac{dy}{dt}\right)^2} \, dt.
+        \]
+      </div>
+    </section>
+
+    <section>
+      <h3>Пример</h3>
+      <p>
+        Пусть задана функция \( y = \frac{x^2}{2} \) на отрезке \([0, 2]\).  
+        Найдём длину дуги кривой.
+      </p>
+      <div class="formula">
+        \[
+          f'(x) = x, \quad L = \int_0^2 \sqrt{1 + x^2} \, dx.
+        \]
+      </div>
+      <p>
+        Этот интеграл можно вычислить аналитически или численно.
+      </p>
+    </section>
+
+    <section>
+      <h3>Значение</h3>
+      <p>
+        Вычисление длины дуги — важная задача в геометрии и прикладных науках,  
+        позволяющая определить протяжённость криволинейных объектов.
+      </p>
+    </section>
+
+    <div style="text-align:center;">
+      <a href="../p_integral.html" class="btn-back" role="button" aria-label="К списку разделов">К списку разделов</a>
+    </div>
+  </main>
+
+  <script>
+    fetch('../header.html').then(r => r.ok ? r.text() : Promise.reject())
+      .then(html => {
+        document.getElementById('header-placeholder').innerHTML = html;
+        if (window.MathJax) {
+          MathJax.typesetPromise();
+        }
+      })
+      .catch(() => {
+        document.getElementById('header-placeholder').innerHTML = '<p style="color:red;text-align:center">Ошибка загрузки шапки</p>';
+      });
+  </script>
+  <script src="../js/menuToggle.js" defer></script>
+</body>
+</html>

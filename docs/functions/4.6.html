@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <title>4.6 Формула Ньютона-Лейбница</title>
+  <link rel="stylesheet" href="../css/style.css"/>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js" async></script>
+  <style>
+    .content { max-width: 900px; margin: auto; padding: 20px; font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif; color: #2c3e50; }
+    section { background: #f9f9f9; border: 1px solid #ddd; border-radius: 8px; padding: 25px; margin-bottom: 25px; box-shadow: 0 2px 5px rgba(0,0,0,0.1); }
+    h2, h3 { text-align: center; margin-bottom: 1.2em; color: #2a2a2b; }
+    p, ul { line-height: 1.6; font-size: 1.1rem; margin-bottom: 1.2em; }
+    ul { margin-left: 24px; }
+    .formula { text-align: center; margin: 1.2em 0; font-size: 1.4rem; color: #404040; font-weight: 500; }
+    .example { background-color: #e9f0ff; border-left: 6px solid #5a7edc; padding: 15px 20px; margin-top: 15px; font-style: italic; }
+    .btn-back { display: inline-block; padding: 14px 30px; font-size: 1.1rem; color: #222; background-color: #b0b0b0; border: none; border-radius: 10px; cursor: pointer; text-decoration: none; box-shadow: 0 5px 10px rgba(150,150,150,0.4); transition: background-color 0.3s ease; user-select: none; margin-top: 35px; }
+    .btn-back:hover { background-color: #999; color: #111; }
+  </style>
+</head>
+<body>
+  <div id="header-placeholder"></div>
+  <main class="content" aria-label="Формула Ньютона-Лейбница">
+    <h2>4.6 Формула Ньютона-Лейбница</h2>
+
+    <section>
+      <h3>Суть формулы</h3>
+      <p>
+        Формула Ньютона-Лейбница связывает определённый интеграл функции с её первообразной.  
+        Если \( F(x) \) — первообразная функции \( f(x) \), то определённый интеграл на отрезке \([a, b]\) выражается как разность значений первообразной в концах отрезка:
+      </p>
+      <div class="formula">
+        \[
+          \int_a^b f(x) \, dx = F(b) - F(a)
+        \]
+      </div>
+      <p>
+        Здесь \( F'(x) = f(x) \), то есть производная первообразной равна исходной функции.
+      </p>
+    </section>
+
+    <section>
+      <h3>Доказательство (интуитивное)</h3>
+      <p>
+        Рассмотрим функцию \( G(x) = \int_a^x f(t) \, dt \).  
+        По теореме о производной интеграла с переменным верхним пределом, \( G'(x) = f(x) \).  
+        Значит, \( G(x) \) — первообразная функции \( f(x) \). Следовательно, существует константа \( C \) такая, что:
+      </p>
+      <div class="formula">
+        \[
+          G(x) = F(x) + C
+        \]
+      </div>
+      <p>
+        Подставляя \( x = a \), получаем:
+      </p>
+      <div class="formula">
+        \[
+          G(a) = \int_a^a f(t) \, dt = 0 = F(a) + C \implies C = -F(a)
+        \]
+      </div>
+      <p>
+        Значит,
+      </p>
+      <div class="formula">
+        \[
+          G(x) = F(x) - F(a)
+        \]
+      </div>
+      <p>
+        При \( x = b \) имеем:
+      </p>
+      <div class="formula">
+        \[
+          \int_a^b f(t) \, dt = G(b) = F(b) - F(a)
+        \]
+      </div>
+    </section>
+
+    <section>
+      <h3>Пример</h3>
+      <p>
+        Найдём определённый интеграл:
+      </p>
+      <div class="formula">
+        \[
+          \int_0^1 (3x^2 + 2x) \, dx
+        \]
+      </div>
+      <p>
+        Первообразная:
+      </p>
+      <div class="formula">
+        \[
+          F(x) = x^3 + x^2 + C
+        \]
+      </div>
+      <p>
+        Применяем формулу Ньютона-Лейбница:
+      </p>
+      <div class="formula">
+        \[
+          \int_0^1 (3x^2 + 2x) \, dx = F(1) - F(0) = (1 + 1) - (0 + 0) = 2
+        \]
+      </div>
+    </section>
+
+    <section>
+      <h3>Значение формулы</h3>
+      <p>
+        Формула Ньютона-Лейбница — ключевой инструмент вычисления определённых интегралов, позволяющий заменить сложную операцию интегрирования на простое вычисление значений первообразной на концах интервала.
+      </p>
+      <p>
+        Это одна из причин, почему изучение первообразных — важнейшая часть курса математического анализа.
+      </p>
+    </section>
+
+    <div style="text-align:center;">
+      <a href="../integral-definite.html" class="btn-back" role="button" aria-label="К списку разделов">К списку разделов</a>
+    </div>
+  </main>
+
+  <script>
+    fetch('../header.html').then(r => r.ok ? r.text() : Promise.reject())
+      .then(html => {
+        document.getElementById('header-placeholder').innerHTML = html;
+        if (window.MathJax) {
+          MathJax.typesetPromise();
+        }
+      })
+      .catch(() => {
+        document.getElementById('header-placeholder').innerHTML = '<p style="color:red;text-align:center">Ошибка загрузки шапки</p>';
+      });
+  </script>
+  <script src="../js/menuToggle.js" defer></script>
+</body>
+</html>

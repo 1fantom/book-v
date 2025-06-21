@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <title>5.7 Формулы трапеций для приближенного интегрирования</title>
+  <link rel="stylesheet" href="../css/style.css"/>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js" async></script>
+  <style>
+    .content { 
+      max-width: 900px; 
+      margin: auto; 
+      padding: 20px; 
+      font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif; 
+      color: #2c3e50; 
+    }
+    section { 
+      background: #f9f9f9; 
+      border: 1px solid #ddd; 
+      border-radius: 8px; 
+      padding: 25px; 
+      margin-bottom: 25px; 
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1); 
+    }
+    h2, h3 { 
+      text-align: center; 
+      margin-bottom: 1.2em; 
+      color: #2a2a2b; 
+    }
+    p, ul { 
+      line-height: 1.6; 
+      font-size: 1.1rem; 
+      margin-bottom: 1.2em; 
+    }
+    ul { 
+      margin-left: 24px; 
+    }
+    .formula { 
+      text-align: center; 
+      margin: 1.2em 0; 
+      font-size: 1.4rem; 
+      color: #404040; 
+      font-weight: 500; 
+    }
+    .example { 
+      background-color: #e9f0ff; 
+      border-left: 6px solid #5a7edc; 
+      padding: 15px 20px; 
+      margin-top: 15px; 
+      font-style: italic; 
+    }
+    .btn-back { 
+      display: inline-block; 
+      padding: 14px 30px; 
+      font-size: 1.1rem; 
+      color: #222; 
+      background-color: #b0b0b0; 
+      border: none; 
+      border-radius: 10px; 
+      cursor: pointer; 
+      text-decoration: none; 
+      box-shadow: 0 5px 10px rgba(150,150,150,0.4); 
+      transition: background-color 0.3s ease; 
+      user-select: none; 
+      margin-top: 35px; 
+    }
+    .btn-back:hover { 
+      background-color: #999; 
+      color: #111; 
+    }
+  </style>
+</head>
+<body>
+  <div id="header-placeholder"></div>
+  <main class="content" aria-label="Формулы трапеций для приближенного интегрирования">
+    <h2>5.7 Формулы трапеций для приближенного интегрирования</h2>
+
+    <section>
+      <h3>Введение</h3>
+      <p>
+        Метод трапеций — один из простейших и эффективных численных методов приближенного вычисления определённых интегралов.  
+        Он основан на замене кривой функции отрезком, соединяющим две соседние точки, и вычислении площади трапеции под этим отрезком.
+      </p>
+    </section>
+
+    <section>
+      <h3>Формула простой трапеции</h3>
+      <p>
+        Пусть функция \( f(x) \) задана на отрезке \([a, b]\). Тогда приближённое значение интеграла можно найти по формуле:
+      </p>
+      <div class="formula">
+        \[
+          \int_a^b f(x) \, dx \approx \frac{b - a}{2} \bigl( f(a) + f(b) \bigr).
+        \]
+      </div>
+      <p>
+        Здесь площадь под графиком функции аппроксимируется площадью трапеции с основаниями \( f(a) \) и \( f(b) \) и высотой \( b - a \).
+      </p>
+    </section>
+
+    <section>
+      <h3>Формула составной трапеции</h3>
+      <p>
+        Для повышения точности отрезок \([a, b]\) разбивают на \( n \) равных частей с длиной шага \( h = \frac{b-a}{n} \). Обозначим точки разбиения:
+        \[
+          x_0 = a, \quad x_1 = a + h, \quad x_2 = a + 2h, \quad \ldots, \quad x_n = b.
+        \]
+      </p>
+      <p>
+        Тогда формула составной трапеции имеет вид:
+      </p>
+      <div class="formula">
+        \[
+          \int_a^b f(x) \, dx \approx \frac{h}{2} \left[ f(x_0) + 2 \sum_{k=1}^{n-1} f(x_k) + f(x_n) \right].
+        \]
+      </div>
+      <p>
+        Здесь сумма учитывает значения функции во всех внутренних точках с коэффициентом 2, а значения на концах — без умножения.
+      </p>
+    </section>
+
+    <section>
+      <h3>Оценка погрешности</h3>
+      <p>
+        Если функция \( f \) дважды непрерывно дифференцируема на \([a,b]\), то погрешность формулы составной трапеции ограничена:
+      </p>
+      <div class="formula">
+        \[
+          \left| R_n \right| \leq \frac{(b - a)^3}{12 n^2} \max_{x \in [a,b]} |f''(x)|.
+        \]
+      </div>
+      <p>
+        Чем больше количество разбиений \( n \), тем точнее приближение.
+      </p>
+    </section>
+
+    <section>
+      <h3>Пример</h3>
+      <p>
+        Приблизим интеграл
+        \[
+          \int_0^1 e^{-x^2} \, dx
+        \]
+        с помощью формулы составной трапеции при \( n=4 \).
+      </p>
+      <p>
+        Шаг \( h = \frac{1-0}{4} = 0.25 \), точки: \( 0, 0.25, 0.5, 0.75, 1 \).
+      </p>
+      <p>
+        Значения функции:
+      </p>
+      <ul>
+        <li>\( f(0) = e^0 = 1 \)</li>
+        <li>\( f(0.25) = e^{-0.0625} \approx 0.9394 \)</li>
+        <li>\( f(0.5) = e^{-0.25} \approx 0.7788 \)</li>
+        <li>\( f(0.75) = e^{-0.5625} \approx 0.5698 \)</li>
+        <li>\( f(1) = e^{-1} \approx 0.3679 \)</li>
+      </ul>
+      <p>
+        Подставляем в формулу:
+      </p>
+      <div class="formula">
+        \[
+          \int_0^1 e^{-x^2} dx \approx \frac{0.25}{2} \left[ 1 + 2(0.9394 + 0.7788 + 0.5698) + 0.3679 \right] \approx 0.7468.
+        \]
+      </div>
+      <p>
+        Точное значение интеграла примерно 0.7468, что показывает хорошую точность метода.
+      </p>
+    </section>
+
+    <div style="text-align:center;">
+      <a href="../p_integral.html" class="btn-back" role="button" aria-label="К списку разделов">К списку разделов</a>
+    </div>
+  </main>
+
+  <script>
+    fetch('../header.html').then(r => r.ok ? r.text() : Promise.reject())
+      .then(html => {
+        document.getElementById('header-placeholder').innerHTML = html;
+        if (window.MathJax) {
+          MathJax.typesetPromise();
+        }
+      })
+      .catch(() => {
+        document.getElementById('header-placeholder').innerHTML = '<p style="color:red;text-align:center">Ошибка загрузки шапки</p>';
+      });
+  </script>
+  <script src="../js/menuToggle.js" defer></script>
+</body>
+</html>

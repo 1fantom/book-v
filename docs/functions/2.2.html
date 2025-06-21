@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <title>2.2 Производная функции — Математический анализ</title>
+  <link rel="stylesheet" href="../css/style.css"/>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js" async></script>
+  <style>
+    .content {
+      max-width: 900px;
+      margin: auto;
+      padding: 20px;
+    }
+    section {
+      background: #f9f9f9;
+      border: 1px solid #ddd;
+      border-radius: 8px;
+      padding: 20px;
+      margin-bottom: 20px;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    }
+    h2, h3 {
+      text-align: center;
+      color: #2c3e50;
+      margin-bottom: 0.5em;
+    }
+    p {
+      line-height: 1.6;
+    }
+    .formula {
+      text-align: center;
+      margin: 1em 0;
+      font-size: 1.1em;
+    }
+    .example {
+      background: #eaf2f8;
+      border-left: 5px solid #3b5998;
+      padding: 12px 18px;
+      margin-top: 10px;
+      font-style: italic;
+      color: #2c3e50;
+      border-radius: 5px;
+    }
+    .btn-back {
+      display: block;
+      width: max-content;
+      margin: 30px auto 0;
+      padding: 12px 28px;
+      font-size: 1rem;
+      color: #222;
+      background-color: #b0b0b0;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      text-decoration: none;
+      text-align: center;
+      box-shadow: 0 4px 8px rgba(150, 150, 150, 0.4);
+      transition: background-color 0.3s ease;
+      user-select: none;
+    }
+    .btn-back:hover, .btn-back:focus {
+      background-color: #999999;
+      outline: none;
+      color: #111;
+    }
+    .nav-buttons {
+      display: flex;
+      justify-content: space-between;
+      margin-top: 40px;
+    }
+  </style>
+</head>
+<body>
+  <div id="header-placeholder"></div>
+
+  <main class="content" tabindex="-1" role="main" aria-label="Производная функции">
+    <h2>2.2 Производная функции</h2>
+
+    <section>
+      <h3>Определение</h3>
+      <p>Пусть функция \( f(x) \) определена в некоторой окрестности точки \( x_0 \). Если существует конечный предел:</p>
+      <div class="formula">
+        \( f'(x_0) = \lim\limits_{h \to 0} \frac{f(x_0 + h) - f(x_0)}{h} \)
+      </div>
+      <p>то он называется <strong>производной</strong> функции \( f(x) \) в точке \( x_0 \).</p>
+    </section>
+
+    <section>
+      <h3>Геометрический смысл</h3>
+      <p>Производная функции в точке равна угловому коэффициенту касательной к графику функции в этой точке.</p>
+    </section>
+
+    <section>
+      <h3>Обозначения</h3>
+      <p>Существует несколько способов записи производной:</p>
+      <div class="formula">
+        \( f'(x),\quad \dfrac{df}{dx},\quad y',\quad \dfrac{dy}{dx} \)
+      </div>
+    </section>
+
+    <section>
+      <h3>Пример</h3>
+      <p>Найдём производную функции \( f(x) = x^2 \):</p>
+      <div class="formula">
+        \( f'(x) = \lim\limits_{h \to 0} \frac{(x+h)^2 - x^2}{h} = \lim\limits_{h \to 0} \frac{2xh + h^2}{h} = 2x \)
+      </div>
+      <div class="example">
+        Производная функции \( f(x) = x^2 \) равна \( f'(x) = 2x \)
+      </div>
+    </section>
+
+    <a href="../derivatives.html" class="btn-back" role="button" aria-label="Перейти к разделу о пределах">
+      Перейти к разделу о производных
+    </a>
+  </main>
+
+  <script>
+    fetch('../header.html')
+      .then(r => r.ok ? r.text() : Promise.reject())
+      .then(html => document.getElementById('header-placeholder').innerHTML = html)
+      .catch(() => {
+        document.getElementById('header-placeholder').innerHTML =
+          '<p style="color:red; text-align:center">Ошибка загрузки шапки</p>';
+      });
+  </script>
+  <script src="../js/menuToggle.js" defer></script>
+</body>
+</html>

@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <title>5.3 Вычисление объема тела</title>
+  <link rel="stylesheet" href="../css/style.css"/>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js" async></script>
+  <style>
+    .content { 
+      max-width: 900px; 
+      margin: auto; 
+      padding: 20px; 
+      font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif; 
+      color: #2c3e50; 
+    }
+    section { 
+      background: #f9f9f9; 
+      border: 1px solid #ddd; 
+      border-radius: 8px; 
+      padding: 25px; 
+      margin-bottom: 25px; 
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1); 
+    }
+    h2, h3 { 
+      text-align: center; 
+      margin-bottom: 1.2em; 
+      color: #2a2a2b; 
+    }
+    p, ul { 
+      line-height: 1.6; 
+      font-size: 1.1rem; 
+      margin-bottom: 1.2em; 
+    }
+    ul { 
+      margin-left: 24px; 
+    }
+    .formula { 
+      text-align: center; 
+      margin: 1.2em 0; 
+      font-size: 1.4rem; 
+      color: #404040; 
+      font-weight: 500; 
+    }
+    .example { 
+      background-color: #e9f0ff; 
+      border-left: 6px solid #5a7edc; 
+      padding: 15px 20px; 
+      margin-top: 15px; 
+      font-style: italic; 
+    }
+    .btn-back { 
+      display: inline-block; 
+      padding: 14px 30px; 
+      font-size: 1.1rem; 
+      color: #222; 
+      background-color: #b0b0b0; 
+      border: none; 
+      border-radius: 10px; 
+      cursor: pointer; 
+      text-decoration: none; 
+      box-shadow: 0 5px 10px rgba(150,150,150,0.4); 
+      transition: background-color 0.3s ease; 
+      user-select: none; 
+      margin-top: 35px; 
+    }
+    .btn-back:hover { 
+      background-color: #999; 
+      color: #111; 
+    }
+  </style>
+</head>
+<body>
+  <div id="header-placeholder"></div>
+  <main class="content" aria-label="Вычисление объема тела">
+    <h2>5.3 Вычисление объема тела</h2>
+
+    <section>
+      <h3>Общее понятие объема тела</h3>
+      <p>
+        Объём тела в пространстве — это мера пространства, занимаемого телом. В математическом анализе объём часто вычисляется с помощью определённых интегралов.
+      </p>
+    </section>
+
+    <section>
+      <h3>Метод дисков (сечений)</h3>
+      <p>
+        Если тело образовано вращением плоской фигуры вокруг оси, то объём можно найти, интегрируя площади поперечных сечений:
+      </p>
+      <div class="formula">
+        \[
+          V = \int_a^b A(x) \, dx,
+        \]
+      </div>
+      <p>
+        где \( A(x) \) — площадь сечения тела на отметке \( x \).
+      </p>
+      <p>
+        В случае вращения вокруг оси \( Ox \), если фигура задана функцией \( y = f(x) \), то площадь сечения — это площадь круга с радиусом \( f(x) \):
+      </p>
+      <div class="formula">
+        \[
+          A(x) = \pi [f(x)]^2.
+        \]
+      </div>
+      <p>
+        Следовательно,
+      </p>
+      <div class="formula">
+        \[
+          V = \pi \int_a^b [f(x)]^2 \, dx.
+        \]
+      </div>
+    </section>
+
+    <section>
+      <h3>Метод оболочек</h3>
+      <p>
+        Если тело вращается вокруг оси, перпендикулярной оси \( Ox \), то можно использовать метод цилиндрических оболочек. Объём вычисляется по формуле:
+      </p>
+      <div class="formula">
+        \[
+          V = 2\pi \int_a^b x \cdot f(x) \, dx,
+        \]
+      </div>
+      <p>
+        где \( x \) — радиус оболочки, а \( f(x) \) — высота.
+      </p>
+    </section>
+
+    <section>
+      <h3>Пример</h3>
+      <p>
+        Найдём объём тела, образованного вращением вокруг оси \( Ox \) области под графиком функции \( y = \sqrt{x} \) на отрезке \([0, 4]\).
+      </p>
+      <div class="formula">
+        \[
+          V = \pi \int_0^4 (\sqrt{x})^2 \, dx = \pi \int_0^4 x \, dx = \pi \left. \frac{x^2}{2} \right|_0^4 = \pi \cdot \frac{16}{2} = 8\pi.
+        \]
+      </div>
+    </section>
+
+    <section>
+      <h3>Значение метода</h3>
+      <p>
+        Вычисление объёмов с помощью интегралов является мощным инструментом для решения задач в геометрии, физике и инженерии, позволяя получать точные значения сложных фигур.
+      </p>
+    </section>
+
+    <div style="text-align:center;">
+      <a href="../p_integral.html" class="btn-back" role="button" aria-label="К списку разделов">К списку разделов</a>
+    </div>
+  </main>
+
+  <script>
+    fetch('../header.html').then(r => r.ok ? r.text() : Promise.reject())
+      .then(html => {
+        document.getElementById('header-placeholder').innerHTML = html;
+        if (window.MathJax) {
+          MathJax.typesetPromise();
+        }
+      })
+      .catch(() => {
+        document.getElementById('header-placeholder').innerHTML = '<p style="color:red;text-align:center">Ошибка загрузки шапки</p>';
+      });
+  </script>
+  <script src="../js/menuToggle.js" defer></script>
+</body>
+</html>
