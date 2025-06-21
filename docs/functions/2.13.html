@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <title>2.13 Экстремумы функции</title>
+  <link rel="stylesheet" href="../css/style.css"/>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js" async></script>
+  <style>
+    .content {
+      max-width: 900px;
+      margin: auto;
+      padding: 20px;
+      font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+      color: #2c3e50;
+    }
+    section {
+      background: #f9f9f9;
+      border: 1px solid #ddd;
+      border-radius: 8px;
+      padding: 20px;
+      margin-bottom: 20px;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    }
+    h2, h3 {
+      text-align: center;
+      margin-bottom: 1em;
+      color: #2a2a2b;
+    }
+    p {
+      line-height: 1.6;
+      font-size: 1.05rem;
+      margin-bottom: 1em;
+    }
+    ul {
+      margin-left: 20px;
+      font-size: 1.05rem;
+      line-height: 1.5;
+    }
+    .formula {
+      text-align: center;
+      margin: 1em 0;
+      font-size: 1.3rem;
+      color: #404040;
+      font-weight: 500;
+    }
+    .btn-back {
+      display: inline-block;
+      padding: 12px 28px;
+      font-size: 1rem;
+      color: #222;
+      background-color: #b0b0b0;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      text-decoration: none;
+      box-shadow: 0 4px 8px rgba(150, 150, 150, 0.4);
+      transition: background-color 0.3s ease;
+      user-select: none;
+      margin-top: 30px;
+    }
+    .btn-back:hover, .btn-back:focus {
+      background-color: #999999;
+      outline: none;
+      color: #111;
+    }
+  </style>
+</head>
+<body>
+  <div id="header-placeholder"></div>
+
+  <main class="content" aria-label="Экстремумы функции">
+    <h2>2.13 Экстремумы функции</h2>
+
+    <section>
+      <h3>Что такое экстремумы?</h3>
+      <p>
+        <strong>Экстремум функции</strong> — это точка на графике функции, в которой она достигает локального максимума или локального минимума. Проще говоря, в окрестности такой точки значения функции либо не больше (локальный максимум), либо не меньше (локальный минимум) значения в самой точке.
+      </p>
+      <p>
+        Экстремумы помогают понять, где функция "поднимается" на вершину или "опускается" в низину, что особенно важно в задачах оптимизации.
+      </p>
+    </section>
+
+    <section>
+      <h3>Локальные и глобальные экстремумы</h3>
+      <ul>
+        <li><strong>Локальный максимум</strong> — точка \( x_0 \), такая что на некотором интервале вокруг неё \( f(x_0) \geq f(x) \) для всех \( x \) из интервала.</li>
+        <li><strong>Локальный минимум</strong> — точка \( x_0 \), такая что \( f(x_0) \leq f(x) \) в некоторой окрестности.</li>
+        <li><strong>Глобальный (абсолютный) максимум</strong> — точка, в которой функция достигает наибольшего значения на всей области определения.</li>
+        <li><strong>Глобальный (абсолютный) минимум</strong> — точка с наименьшим значением функции.</li>
+      </ul>
+      <p>Локальные экстремумы важны для анализа поведения функции на небольших участках, а глобальные — при изучении функции в целом.</p>
+    </section>
+
+    <section>
+      <h3>Необходимое условие экстремума</h3>
+      <p>
+        Если функция \( f \) дифференцируема в точке \( x_0 \) и имеет экстремум в этой точке, то её производная в \( x_0 \) равна нулю:
+      </p>
+      <div class="formula">
+        \[
+          f'(x_0) = 0.
+        \]
+      </div>
+      <p>
+        Такие точки называют <em>критическими</em>. Но не каждая критическая точка обязательно является экстремумом — необходимо провести дополнительный анализ.
+      </p>
+    </section>
+
+    <section>
+      <h3>Достаточные условия экстремума (критерий второй производной)</h3>
+      <p>
+        Пусть функция дважды дифференцируема в точке \( x_0 \), где \( f'(x_0) = 0 \). Тогда:
+      </p>
+      <ul>
+        <li>Если \( f''(x_0) > 0 \), то \( f \) имеет локальный минимум в точке \( x_0 \).</li>
+        <li>Если \( f''(x_0) < 0 \), то \( f \) имеет локальный максимум в точке \( x_0 \).</li>
+        <li>Если \( f''(x_0) = 0 \), то необходимо исследовать функцию более подробно — например, использовать производные высших порядков или анализировать поведение функции около точки.</li>
+      </ul>
+    </section>
+
+    <section>
+      <h3>Пример нахождения экстремумов</h3>
+      <p>
+        Рассмотрим функцию
+      </p>
+      <div class="formula">
+        \[
+          f(x) = x^3 - 3x^2 + 4.
+        \]
+      </div>
+      <p>
+        Найдём первую и вторую производные:
+      </p>
+      <div class="formula">
+        \[
+          f'(x) = 3x^2 - 6x, \quad f''(x) = 6x - 6.
+        \]
+      </div>
+      <p>
+        Решим уравнение \( f'(x) = 0 \):
+      </p>
+      <div class="formula">
+        \[
+          3x^2 - 6x = 3x(x - 2) = 0 \implies x = 0 \text{ или } x = 2.
+        \]
+      </div>
+      <p>Исследуем вторую производную в этих точках:</p>
+      <ul>
+        <li>При \( x=0 \), \( f''(0) = 6\cdot 0 - 6 = -6 < 0 \), значит локальный максимум.</li>
+        <li>При \( x=2 \), \( f''(2) = 12 - 6 = 6 > 0 \), значит локальный минимум.</li>
+      </ul>
+      <p>
+        Таким образом, функция имеет локальный максимум в точке \( x=0 \) и локальный минимум в \( x=2 \).
+      </p>
+    </section>
+
+    <section>
+      <h3>Особые случаи</h3>
+      <p>
+        Иногда производная функции в точке экстремума может не существовать. Такие точки тоже могут быть экстремумами, например, точки угла или разрыва касательной. В таких случаях анализируют поведение функции слева и справа от точки.
+      </p>
+    </section>
+
+    <section>
+      <h3>Практическое значение экстремумов</h3>
+      <p>
+        Знание экстремумов помогает в самых разных задачах:
+      </p>
+      <ul>
+        <li>Оптимизация (нахождение максимума прибыли или минимума затрат);</li>
+        <li>Анализ движения и физических процессов;</li>
+        <li>Моделирование и прогнозирование;</li>
+        <li>Понимание формы и свойств графика функции.</li>
+      </ul>
+    </section>
+
+    <div style="text-align: center;">
+      <a href="../derivatives.html" class="btn-back" role="button" aria-label="Перейти к разделу о пределах">
+        Перейти к разделу о пределах
+      </a>
+    </div>
+  </main>
+
+  <script>
+    fetch('../header.html')
+      .then(r => r.ok ? r.text() : Promise.reject())
+      .then(html => document.getElementById('header-placeholder').innerHTML = html)
+      .catch(() => {
+        document.getElementById('header-placeholder').innerHTML =
+          '<p style="color:red; text-align:center">Ошибка загрузки шапки</p>';
+      });
+  </script>
+
+  <script src="../js/menuToggle.js" defer></script>
+</body>
+</html>

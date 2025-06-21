@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <title>4.7 Теорема о среднем интегрального исчисления</title>
+  <link rel="stylesheet" href="../css/style.css"/>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js" async></script>
+  <style>
+    .content { max-width: 900px; margin: auto; padding: 20px; font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif; color: #2c3e50; }
+    section { background: #f9f9f9; border: 1px solid #ddd; border-radius: 8px; padding: 25px; margin-bottom: 25px; box-shadow: 0 2px 5px rgba(0,0,0,0.1); }
+    h2, h3 { text-align: center; margin-bottom: 1.2em; color: #2a2a2b; }
+    p, ul { line-height: 1.6; font-size: 1.1rem; margin-bottom: 1.2em; }
+    ul { margin-left: 24px; }
+    .formula { text-align: center; margin: 1.2em 0; font-size: 1.4rem; color: #404040; font-weight: 500; }
+    .example { background-color: #e9f0ff; border-left: 6px solid #5a7edc; padding: 15px 20px; margin-top: 15px; font-style: italic; }
+    .btn-back { display: inline-block; padding: 14px 30px; font-size: 1.1rem; color: #222; background-color: #b0b0b0; border: none; border-radius: 10px; cursor: pointer; text-decoration: none; box-shadow: 0 5px 10px rgba(150,150,150,0.4); transition: background-color 0.3s ease; user-select: none; margin-top: 35px; }
+    .btn-back:hover { background-color: #999; color: #111; }
+  </style>
+</head>
+<body>
+  <div id="header-placeholder"></div>
+  <main class="content" aria-label="Теорема о среднем интегрального исчисления">
+    <h2>4.7 Теорема о среднем интегрального исчисления</h2>
+
+    <section>
+      <h3>Формулировка теоремы</h3>
+      <p>
+        Пусть функция \( f(x) \) непрерывна на отрезке \([a, b]\). Тогда существует такая точка \( c \in [a, b] \), что выполняется равенство:
+      </p>
+      <div class="formula">
+        \[
+          \int_a^b f(x) \, dx = f(c) (b - a)
+        \]
+      </div>
+      <p>
+        Это означает, что площадь под графиком функции на интервале равна площади прямоугольника с основанием \((b - a)\) и высотой \(f(c)\).
+      </p>
+    </section>
+
+    <section>
+      <h3>Интуиция и смысл</h3>
+      <p>
+        Теорема утверждает, что при непрерывной функции на отрезке существует точка, в которой функция принимает среднее значение по этому интервалу.  
+        Это среднее значение характеризует общий "уровень" функции на интервале.
+      </p>
+    </section>
+
+    <section>
+      <h3>Краткое доказательство</h3>
+      <p>
+        По теореме Вейерштрасса функция \( f(x) \) достигает на отрезке \([a, b]\) минимальное значение \( m \) и максимальное значение \( M \), поэтому справедливо неравенство:
+      </p>
+      <div class="formula">
+        \[
+          m (b - a) \leq \int_a^b f(x) \, dx \leq M (b - a)
+        \]
+      </div>
+      <p>
+        Поскольку функция \( f \) непрерывна, по теореме Больцано-Коши существует точка \( c \in [a, b] \), для которой выполняется равенство:
+      </p>
+      <div class="formula">
+        \[
+          f(c) = \frac{1}{b - a} \int_a^b f(x) \, dx
+        \]
+      </div>
+    </section>
+
+    <section>
+      <h3>Пример</h3>
+      <p>
+        Рассмотрим функцию \( f(x) = x^2 \) на интервале \([1, 3]\).  
+        Вычислим определённый интеграл:
+      </p>
+      <div class="formula">
+        \[
+          \int_1^3 x^2 \, dx = \left. \frac{x^3}{3} \right|_1^3 = \frac{27}{3} - \frac{1}{3} = \frac{26}{3}
+        \]
+      </div>
+      <p>
+        Среднее значение функции:
+      </p>
+      <div class="formula">
+        \[
+          f(c) = \frac{1}{3 - 1} \cdot \frac{26}{3} = \frac{13}{3}
+        \]
+      </div>
+      <p>
+        Найдём \( c \), при котором \( f(c) = c^2 = \frac{13}{3} \):
+      </p>
+      <div class="formula">
+        \[
+          c = \sqrt{\frac{13}{3}} \approx 2.08
+        \]
+      </div>
+    </section>
+
+    <section>
+      <h3>Значение теоремы</h3>
+      <p>
+        Теорема о среднем интегрального исчисления — важный инструмент в математическом анализе, позволяющий связать интеграл функции со значением функции в некоторой точке.  
+        Она помогает понять, что интеграл — это не просто площадь, но и "среднее" поведение функции на интервале.
+      </p>
+    </section>
+
+    <div style="text-align:center;">
+      <a href="../integral-definite.html" class="btn-back" role="button" aria-label="К списку разделов">К списку разделов</a>
+    </div>
+  </main>
+
+  <script>
+    fetch('../header.html').then(r => r.ok ? r.text() : Promise.reject())
+      .then(html => {
+        document.getElementById('header-placeholder').innerHTML = html;
+        if (window.MathJax) {
+          MathJax.typesetPromise();
+        }
+      })
+      .catch(() => {
+        document.getElementById('header-placeholder').innerHTML = '<p style="color:red;text-align:center">Ошибка загрузки шапки</p>';
+      });
+  </script>
+  <script src="../js/menuToggle.js" defer></script>
+</body>
+</html>
+    

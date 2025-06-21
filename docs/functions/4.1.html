@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <title>4.1 Задача об определении площади</title>
+  <link rel="stylesheet" href="../css/style.css"/>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js" async></script>
+  <style>
+    .content { max-width: 900px; margin: auto; padding: 20px; font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif; color: #2c3e50; }
+    section { background: #f9f9f9; border: 1px solid #ddd; border-radius: 8px; padding: 20px; margin-bottom: 20px; box-shadow: 0 2px 5px rgba(0,0,0,0.1); }
+    h2, h3 { text-align: center; margin-bottom: 1em; color: #2a2a2b; }
+    p, ul { line-height: 1.6; font-size: 1.05rem; margin-bottom: 1em; }
+    ul { margin-left: 20px; }
+    .formula { text-align: center; margin: 1em 0; font-size: 1.3rem; color: #404040; font-weight: 500; }
+    .btn-back { display: inline-block; padding: 12px 28px; font-size: 1rem; color: #222; background-color: #b0b0b0; border: none; border-radius: 8px; cursor: pointer; text-decoration: none; box-shadow: 0 4px 8px rgba(150,150,150,0.4); transition: background-color 0.3s ease; user-select: none; margin-top: 30px; }
+    .btn-back:hover { background-color: #999; color: #111; }
+  </style>
+</head>
+<body>
+  <div id="header-placeholder"></div>
+  <main class="content" aria-label="Задача об определении площади">
+    <h2>4.1 Задача об определении площади</h2>
+
+    <section>
+      <h3>Постановка задачи</h3>
+      <p>
+        Одной из фундаментальных задач математического анализа является задача об определении площади криволинейной трапеции, ограниченной графиком функции \( f(x) \), осью абсцисс и вертикальными прямыми \( x = a \) и \( x = b \).
+      </p>
+      <div class="formula">
+        \[ S = \int_a^b f(x)\,dx \]
+      </div>
+      <p>
+        Эта задача лежит в основе понятия определённого интеграла и играет важную роль в теоретической и прикладной математике.
+      </p>
+    </section>
+
+    <section>
+      <h3>Геометрическая интерпретация</h3>
+      <p>
+        Рассматриваемая площадь — это область под графиком функции \( f(x) \), заключённая между вертикальными прямыми \( x = a \) и \( x = b \). Функция должна быть непрерывной на этом интервале, чтобы площадь имела смысл.
+      </p>
+    </section>
+
+    <section>
+      <h3>Численное приближение</h3>
+      <p>
+        Для приближённого нахождения площади используют метод прямоугольников, трапеций или парабол (метод Симпсона). Эти методы основаны на разбиении интервала на части и приближённом вычислении площади каждого участка.
+      </p>
+    </section>
+
+    <section>
+      <h3>Пример</h3>
+      <p>
+        Пусть дана функция \( f(x) = x^2 \) на интервале от 0 до 2. Тогда площадь под графиком вычисляется как:
+      </p>
+      <div class="formula">
+        \[ S = \int_0^2 x^2\,dx = \left.\frac{x^3}{3}\right|_0^2 = \frac{8}{3} \]
+      </div>
+      <p>
+        Таким образом, площадь области под параболой \( y = x^2 \) от 0 до 2 равна \( \frac{8}{3} \).
+      </p>
+    </section>
+
+    <section>
+      <h3>Итог</h3>
+      <p>
+        Задача об определении площади под графиком функции приводит к введению понятия определённого интеграла, который используется как в теоретических, так и в прикладных целях.
+      </p>
+    </section>
+
+    <div style="text-align:center;">
+      <a href="../integral-definite.html" class="btn-back" role="button" aria-label="К списку разделов">К списку разделов</a>
+    </div>
+  </main>
+
+  <script>
+    fetch('../header.html').then(r => r.ok ? r.text() : Promise.reject())
+      .then(html => document.getElementById('header-placeholder').innerHTML = html)
+      .catch(() => {
+        document.getElementById('header-placeholder').innerHTML = '<p style="color:red;text-align:center">Ошибка загрузки шапки</p>';
+      });
+  </script>
+  <script src="../js/menuToggle.js" defer></script>
+</body>
+</html>

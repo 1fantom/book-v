@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <title>2.12 Условия монотонности функции</title>
+  <link rel="stylesheet" href="../css/style.css"/>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js" async></script>
+  <style>
+    .content {
+      max-width: 900px;
+      margin: auto;
+      padding: 20px;
+      font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+      color: #2c3e50;
+    }
+    section {
+      background: #f9f9f9;
+      border: 1px solid #ddd;
+      border-radius: 8px;
+      padding: 20px;
+      margin-bottom: 20px;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    }
+    h2, h3 {
+      text-align: center;
+      margin-bottom: 1em;
+      color: #2a2a2b;
+    }
+    p {
+      line-height: 1.6;
+      font-size: 1.05rem;
+      margin-bottom: 1em;
+    }
+    ul {
+      margin-left: 20px;
+      font-size: 1.05rem;
+      line-height: 1.5;
+    }
+    .formula {
+      text-align: center;
+      margin: 1em 0;
+      font-size: 1.3rem;
+      color: #404040;
+      font-weight: 500;
+    }
+    .btn-back {
+      display: inline-block;
+      padding: 12px 28px;
+      font-size: 1rem;
+      color: #222;
+      background-color: #b0b0b0;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      text-decoration: none;
+      box-shadow: 0 4px 8px rgba(150, 150, 150, 0.4);
+      transition: background-color 0.3s ease;
+      user-select: none;
+      margin-top: 30px;
+    }
+    .btn-back:hover, .btn-back:focus {
+      background-color: #999999;
+      outline: none;
+      color: #111;
+    }
+  </style>
+</head>
+<body>
+  <div id="header-placeholder"></div>
+
+  <main class="content" aria-label="Условия монотонности функции">
+    <h2>2.12 Условия монотонности функции</h2>
+
+    <section>
+      <h3>Что такое монотонность функции?</h3>
+      <p>
+        Монотонность — это важное свойство функции, которое отражает, как меняются её значения при увеличении аргумента. Если функция сохраняет направление изменения (всегда растёт или всегда падает) на определённом интервале, говорят, что она монотонна.
+      </p>
+      <p>
+        Различают два основных вида монотонности:
+      </p>
+      <ul>
+        <li><strong>Монотонно возрастающая функция</strong> — если с ростом \( x \) значения \( f(x) \) не уменьшаются. То есть, для любых \( x_1 < x_2 \) из интервала справедливо \( f(x_1) \leq f(x_2) \).</li>
+        <li><strong>Монотонно убывающая функция</strong> — если при росте \( x \) значения \( f(x) \) не увеличиваются, то есть \( f(x_1) \geq f(x_2) \).</li>
+      </ul>
+      <p>
+        В случае, когда неравенства строгие (без равенств), функция называется <em>строго монотонной</em>.
+      </p>
+    </section>
+
+    <section>
+      <h3>Почему важно знать монотонность?</h3>
+      <p>
+        Понимание монотонности функции помогает:
+      </p>
+      <ul>
+        <li>Определять поведение функции без необходимости строить её график по точкам;</li>
+        <li>Решать уравнения и неравенства, зная, что функция растёт или падает;</li>
+        <li>Находить экстремумы — максимумы и минимумы;</li>
+        <li>Изучать гладкость и особенности функций;</li>
+        <li>Проводить анализ в различных прикладных задачах — от физики до экономики.</li>
+      </ul>
+    </section>
+
+    <section>
+      <h3>Критерии монотонности через производную</h3>
+      <p>
+        Для дифференцируемой функции \( f(x) \) исследование монотонности на интервале \( I \) сводится к анализу знака её производной \( f'(x) \):
+      </p>
+      <ul>
+        <li>Если <strong>\( f'(x) \geq 0 \)</strong> для всех \( x \in I \), то функция монотонно возрастает на этом интервале.</li>
+        <li>Если <strong>\( f'(x) \leq 0 \)</strong> для всех \( x \in I \), то функция монотонно убывает на этом интервале.</li>
+        <li>Если <strong>\( f'(x) > 0 \)</strong> для всех \( x \in I \), то функция строго возрастает.</li>
+        <li>Если <strong>\( f'(x) < 0 \)</strong> для всех \( x \in I \), то функция строго убывает.</li>
+      </ul>
+      <p>
+        Таким образом, знак производной — это знак направления изменения функции.
+      </p>
+    </section>
+
+    <section>
+      <h3>Связь монотонности и экстремумов</h3>
+      <p>
+        Точки, в которых производная функции равна нулю или не существует, называются критическими точками. Изменение знака производной около такой точки указывает на наличие экстремума — максимума или минимума.
+      </p>
+      <p>
+        Например, если производная меняется с положительной на отрицательную — функция достигает локального максимума. Если с отрицательной на положительную — локального минимума.
+      </p>
+    </section>
+
+    <section>
+      <h3>Пример анализа монотонности</h3>
+      <p>
+        Рассмотрим функцию
+      </p>
+      <div class="formula">
+        \[
+          f(x) = x^3 - 3x.
+        \]
+      </div>
+      <p>
+        Найдём её производную:
+      </p>
+      <div class="formula">
+        \[
+          f'(x) = 3x^2 - 3 = 3(x^2 - 1).
+        \]
+      </div>
+      <p>
+        Производная равна нулю при \( x = \pm 1 \) — потенциальные точки экстремума.
+      </p>
+      <p>Анализ знака производной по интервалам:</p>
+      <ul>
+        <li>При \( x < -1 \), возьмём, например, \( x = -2 \): \( f'(-2) = 3(4 - 1) = 9 > 0 \) — функция возрастает.</li>
+        <li>При \( -1 < x < 1 \), возьмём \( x = 0 \): \( f'(0) = 3(0 - 1) = -3 < 0 \) — функция убывает.</li>
+        <li>При \( x > 1 \), возьмём \( x = 2 \): \( f'(2) = 3(4 - 1) = 9 > 0 \) — функция снова возрастает.</li>
+      </ul>
+      <p>
+        Значит, в точке \( x = -1 \) — локальный максимум, а в точке \( x = 1 \) — локальный минимум.
+      </p>
+    </section>
+
+    <section>
+      <h3>Итоги и практическое значение</h3>
+      <p>
+        Понимание и умение находить интервалы монотонности — это фундаментальная часть анализа функций, которая облегчает изучение поведения сложных функций, помогает находить решения уравнений, а также эффективно применять математику в реальных задачах.
+      </p>
+    </section>
+
+    <div style="text-align: center;">
+      <a href="../derivatives.html" class="btn-back" role="button" aria-label="Перейти к разделу о пределах">
+        Перейти к разделу о пределах
+      </a>
+    </div>
+  </main>
+
+  <script>
+    fetch('../header.html')
+      .then(r => r.ok ? r.text() : Promise.reject())
+      .then(html => document.getElementById('header-placeholder').innerHTML = html)
+      .catch(() => {
+        document.getElementById('header-placeholder').innerHTML =
+          '<p style="color:red; text-align:center">Ошибка загрузки шапки</p>';
+      });
+  </script>
+
+  <script src="../js/menuToggle.js" defer></script>
+</body>
+</html>

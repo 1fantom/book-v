@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <title>2.9 Производная неявной функции</title>
+  <link rel="stylesheet" href="../css/style.css"/>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js" async></script>
+  <style>
+    .content {
+      max-width: 900px;
+      margin: auto;
+      padding: 20px;
+      font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+      color: #2c3e50;
+    }
+    section {
+      background: #f9f9f9;
+      border: 1px solid #ddd;
+      border-radius: 8px;
+      padding: 20px;
+      margin-bottom: 20px;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    }
+    h2, h3 {
+      text-align: center;
+      margin-bottom: 1em;
+      color: #2a2a2b;
+    }
+    p {
+      line-height: 1.6;
+      font-size: 1.05rem;
+      margin-bottom: 1em;
+    }
+    .formula {
+      text-align: center;
+      margin: 1em 0;
+      font-size: 1.2rem;
+      color: #404040;
+    }
+    .btn-back {
+      display: inline-block;
+      padding: 12px 28px;
+      font-size: 1rem;
+      color: #222;
+      background-color: #b0b0b0;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      text-decoration: none;
+      box-shadow: 0 4px 8px rgba(150, 150, 150, 0.4);
+      transition: background-color 0.3s ease;
+      user-select: none;
+      margin-top: 30px;
+    }
+    .btn-back:hover, .btn-back:focus {
+      background-color: #999999;
+      outline: none;
+      color: #111;
+    }
+  </style>
+</head>
+<body>
+  <div id="header-placeholder"></div>
+
+  <main class="content" aria-label="Производная неявной функции">
+    <h2>2.9 Производная неявной функции</h2>
+
+    <section>
+      <h3>Что такое неявная функция?</h3>
+      <p>
+        Не всегда функция задана явно в виде \( y = f(x) \). Иногда переменные \( x \) и \( y \) связаны уравнением, в котором нельзя или неудобно выразить \( y \) явно. Такие уравнения называют <em>неявными функциями</em>.
+      </p>
+      <p>Например, уравнение окружности:</p>
+      <div class="formula">
+        \[
+          x^2 + y^2 = r^2
+        \]
+      </div>
+      <p>задаёт зависимость \( y \) от \( x \) неявно.</p>
+    </section>
+
+    <section>
+      <h3>Дифференцирование неявной функции</h3>
+      <p>
+        Чтобы найти производную \( \frac{dy}{dx} \) неявной функции, дифференцируем обе части уравнения по \( x \), применяя правило цепочки к \( y \), рассматривая \( y \) как функцию от \( x \).
+      </p>
+      <p>Пусть функция задана уравнением:</p>
+      <div class="formula">
+        \[
+          F(x,y) = 0
+        \]
+      </div>
+      <p>Тогда, дифференцируя по \( x \), получаем:</p>
+      <div class="formula">
+        \[
+          \frac{\partial F}{\partial x} + \frac{\partial F}{\partial y} \cdot \frac{dy}{dx} = 0
+        \]
+      </div>
+      <p>Отсюда выразим производную:</p>
+      <div class="formula">
+        \[
+          \frac{dy}{dx} = -\frac{\frac{\partial F}{\partial x}}{\frac{\partial F}{\partial y}}, \quad \text{при } \frac{\partial F}{\partial y} \neq 0
+        \]
+      </div>
+    </section>
+
+    <section>
+      <h3>Пример</h3>
+      <p>Для окружности \( x^2 + y^2 = r^2 \) дифференцируем:</p>
+      <div class="formula">
+        \[
+          2x + 2y \frac{dy}{dx} = 0
+        \]
+      </div>
+      <p>Откуда:</p>
+      <div class="formula">
+        \[
+          \frac{dy}{dx} = -\frac{x}{y}
+        \]
+      </div>
+    </section>
+
+    <section>
+      <h3>Геометрический смысл</h3>
+      <p>
+        Производная неявной функции в точке — это угол наклона касательной к кривой, заданной уравнением \( F(x,y) = 0 \). Она показывает, насколько быстро изменяется \( y \) при изменении \( x \) вблизи этой точки.
+      </p>
+    </section>
+
+    <div style="text-align: center;">
+      <a href="../derivatives.html" class="btn-back" role="button" aria-label="Перейти к разделу о пределах">
+        Перейти к разделу о производных
+      </a>
+    </div>
+  </main>
+
+  <script>
+    fetch('../header.html')
+      .then(r => r.ok ? r.text() : Promise.reject())
+      .then(html => document.getElementById('header-placeholder').innerHTML = html)
+      .catch(() => {
+        document.getElementById('header-placeholder').innerHTML =
+          '<p style="color:red; text-align:center">Ошибка загрузки шапки</p>';
+      });
+  </script>
+
+  <script src="../js/menuToggle.js" defer></script>
+</body>
+</html>

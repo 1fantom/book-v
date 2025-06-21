@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <title>Интегральное исчисление — Математический анализ</title>
+  <link rel="stylesheet" href="css/style.css"/>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js" async></script>
+  <style>
+    .content {
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 20px;
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+    .section-card {
+      background: #f9f9f9;
+      border: 1px solid #ddd;
+      border-radius: 10px;
+      padding: 20px 25px;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+      transition: transform 0.3s, box-shadow 0.3s;
+    }
+    .section-card:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 6px 15px rgba(0,0,0,0.15);
+    }
+    .section-card h3 {
+      margin: 0 0 10px;
+      font-size: 1.4rem;
+      color: #2c3e50;
+    }
+    .section-card p {
+      margin: 0 0 15px;
+      color: #555;
+      line-height: 1.4;
+    }
+    .btn-more {
+      display: inline-block;
+      background-color: #444;
+      color: #fff;
+      border: none;
+      border-radius: 6px;
+      padding: 8px 16px;
+      font-size: 0.95rem;
+      font-weight: 600;
+      cursor: pointer;
+      text-decoration: none;
+      transition: background-color 0.3s, box-shadow 0.2s;
+    }
+    .btn-more:hover {
+      background-color: #222;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+    }
+    h2 {
+      text-align: center;
+      margin-bottom: 30px;
+      color: #212529;
+      font-size: 2.5rem;
+      font-weight: 700;
+      text-shadow: 1px 1px 2px rgba(0,0,0,0.1);
+    }
+  </style>
+</head>
+<body>
+
+  <div id="header-placeholder"></div>
+
+  <main class="content" tabindex="-1">
+    <h2>Интегральное исчисление функции одной переменной</h2>
+
+    <div class="section-card">
+      <h3><a href="functions/3.1.html">3.1 Неопределенный интеграл и его свойства</a></h3>
+      <p>Основные понятия неопределенного интеграла и его важные свойства.</p>
+      <a href="functions/3.1.html" class="btn-more">Перейти</a>
+    </div>
+
+    <div class="section-card">
+      <h3><a href="functions/3.2.html">3.2 Замена переменной в неопределённом интеграле</a></h3>
+      <p>Метод замены переменной для упрощения интегрирования.</p>
+      <a href="functions/3.2.html" class="btn-more">Перейти</a>
+    </div>
+
+    <div class="section-card">
+      <h3><a href="functions/3.3.html">3.3 Интегрирование по частям</a></h3>
+      <p>Техника интегрирования, основанная на формуле интегрирования по частям.</p>
+      <a href="functions/3.3.html" class="btn-more">Перейти</a>
+    </div>
+
+    <div class="section-card">
+      <h3><a href="functions/3.4.html">3.4 Интегрирование простейших дробей</a></h3>
+      <p>Методы интегрирования дробных функций простейшего вида.</p>
+      <a href="functions/3.4.html" class="btn-more">Перейти</a>
+    </div>
+
+    <div class="section-card">
+      <h3><a href="functions/3.5.html">3.5 Разложение многочлена на множители</a></h3>
+      <p>Приёмы разложения многочленов для упрощения интегрирования.</p>
+      <a href="functions/3.5.html" class="btn-more">Перейти</a>
+    </div>
+
+    <div class="section-card">
+      <h3><a href="functions/3.6.html">3.6 Интегрирование дробно-рациональных функций</a></h3>
+      <p>Интегрирование рациональных функций методом разложения на простейшие дроби.</p>
+      <a href="functions/3.6.html" class="btn-more">Перейти</a>
+    </div>
+
+    <div class="section-card">
+      <h3><a href="functions/3.7.html">3.7 Простейшие тригонометрические интегралы</a></h3>
+      <p>Интегрирование основных тригонометрических функций и выражений.</p>
+      <a href="functions/3.7.html" class="btn-more">Перейти</a>
+    </div>
+
+    <div class="section-card">
+      <h3><a href="functions/3.8.html">3.8 Интегрирование простейших иррациональностей</a></h3>
+      <p>Методы интегрирования выражений с иррациональными функциями.</p>
+      <a href="functions/3.8.html" class="btn-more">Перейти</a>
+    </div>
+
+  </main>
+
+  <script>
+    fetch('header.html')
+      .then(response => response.text())
+      .then(html => {
+        document.getElementById('header-placeholder').innerHTML = html;
+      })
+      .catch(() => {
+        document.getElementById('header-placeholder').innerHTML = '<p>Ошибка загрузки шапки и меню</p>';
+      });
+  </script>
+  <script src="js/menuToggle.js" defer></script>
+
+</body>
+</html>

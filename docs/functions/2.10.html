@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <title>2.10 Раскрытие неопределённостей</title>
+  <link rel="stylesheet" href="../css/style.css"/>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js" async></script>
+  <style>
+    .content {
+      max-width: 900px;
+      margin: auto;
+      padding: 20px;
+      font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+      color: #2c3e50;
+    }
+    section {
+      background: #f9f9f9;
+      border: 1px solid #ddd;
+      border-radius: 8px;
+      padding: 20px;
+      margin-bottom: 20px;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    }
+    h2, h3 {
+      text-align: center;
+      margin-bottom: 1em;
+      color: #2a2a2b;
+    }
+    p {
+      line-height: 1.6;
+      font-size: 1.05rem;
+      margin-bottom: 1em;
+    }
+    .formula {
+      text-align: center;
+      margin: 1em 0;
+      font-size: 1.2rem;
+      color: #404040;
+    }
+    .btn-back {
+      display: inline-block;
+      padding: 12px 28px;
+      font-size: 1rem;
+      color: #222;
+      background-color: #b0b0b0;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      text-decoration: none;
+      box-shadow: 0 4px 8px rgba(150, 150, 150, 0.4);
+      transition: background-color 0.3s ease;
+      user-select: none;
+      margin-top: 30px;
+    }
+    .btn-back:hover, .btn-back:focus {
+      background-color: #999999;
+      outline: none;
+      color: #111;
+    }
+  </style>
+</head>
+<body>
+  <div id="header-placeholder"></div>
+
+  <main class="content" aria-label="Раскрытие неопределённостей">
+    <h2>2.10 Раскрытие неопределённостей</h2>
+
+    <section>
+      <h3>Что такое неопределённости?</h3>
+      <p>
+        В математическом анализе при вычислении пределов иногда встречаются выражения, которые на первый взгляд не имеют определённого значения — так называемые <em>неопределённости</em>. Самые распространённые из них:
+      </p>
+      <ul>
+        <li><strong>0/0</strong> — неопределённость вида дроби с нулём в числителе и знаменателе;</li>
+        <li><strong>∞/∞</strong> — неопределённость вида бесконечность, делённая на бесконечность;</li>
+        <li><strong>0·∞</strong> — неопределённость произведения нуля на бесконечность;</li>
+        <li><strong>∞ - ∞</strong> — неопределённость разности бесконечностей;</li>
+        <li><strong>0^0, ∞^0, 1^∞</strong> — неопределённости вида степеней.</li>
+      </ul>
+      <p>
+        Эти формы требуют специальных приёмов для вычисления пределов.
+      </p>
+    </section>
+
+    <section>
+      <h3>Методы раскрытия неопределённостей</h3>
+      <p>Самые распространённые методы для раскрытия неопределённостей:</p>
+      <ul>
+        <li><strong>Алгебраическое преобразование</strong> — упрощение выражения, сокращение общих множителей, разложение на множители;</li>
+        <li><strong>Правило Лопиталя</strong> — применяется к неопределённостям вида <code>0/0</code> и <code>∞/∞</code>, используя производные числителя и знаменателя;</li>
+        <li><strong>Замена переменных и разложение в ряд Тейлора</strong> — помогает упростить сложные выражения;</li>
+        <li><strong>Использование пределов, эквивалентных данным функциям</strong> — например, \(\sin x \sim x\) при \(x \to 0\).</li>
+      </ul>
+    </section>
+
+    <section>
+      <h3>Правило Лопиталя</h3>
+      <p>
+        Если при вычислении предела \(\lim_{x \to a} \frac{f(x)}{g(x)}\) получаем неопределённость вида \( \frac{0}{0} \) или \( \frac{\infty}{\infty} \), то, при условии существования соответствующих производных, можно применить правило Лопиталя:
+      </p>
+      <div class="formula">
+        \[
+          \lim_{x \to a} \frac{f(x)}{g(x)} = \lim_{x \to a} \frac{f'(x)}{g'(x)},
+        \]
+      </div>
+      <p>
+        если предел справа существует или равен бесконечности.
+      </p>
+    </section>
+
+    <section>
+      <h3>Примеры раскрытия неопределённостей</h3>
+      <p><strong>Пример 1:</strong></p>
+      <p>Вычислим предел:</p>
+      <div class="formula">
+        \[
+          \lim_{x \to 0} \frac{\sin x}{x}
+        \]
+      </div>
+      <p>Подставляя \(x=0\), получаем неопределённость \(\frac{0}{0}\). Применим правило Лопиталя:</p>
+      <div class="formula">
+        \[
+          \lim_{x \to 0} \frac{\sin x}{x} = \lim_{x \to 0} \frac{\cos x}{1} = 1.
+        \]
+      </div>
+
+      <p><strong>Пример 2:</strong></p>
+      <p>Вычислим предел:</p>
+      <div class="formula">
+        \[
+          \lim_{x \to \infty} \frac{x}{e^x}
+        \]
+      </div>
+      <p>При \( x \to \infty \) получаем неопределённость \( \frac{\infty}{\infty} \). Применим правило Лопиталя:</p>
+      <div class="formula">
+        \[
+          \lim_{x \to \infty} \frac{x}{e^x} = \lim_{x \to \infty} \frac{1}{e^x} = 0.
+        \]
+      </div>
+    </section>
+
+    <section>
+      <h3>Практические советы</h3>
+      <p>
+        Не забывай: иногда неопределённость можно устранить простым преобразованием выражения, не прибегая к правилу Лопиталя. Всегда сначала попробуй упростить функцию — это экономит время и помогает лучше понять задачу.
+      </p>
+    </section>
+
+    <div style="text-align: center;">
+      <a href="../derivatives.html" class="btn-back" role="button" aria-label="Перейти к разделу о пределах">
+        Перейти к разделу о пределах
+      </a>
+    </div>
+  </main>
+
+  <script>
+    fetch('../header.html')
+      .then(r => r.ok ? r.text() : Promise.reject())
+      .then(html => document.getElementById('header-placeholder').innerHTML = html)
+      .catch(() => {
+        document.getElementById('header-placeholder').innerHTML =
+          '<p style="color:red; text-align:center">Ошибка загрузки шапки</p>';
+      });
+  </script>
+
+  <script src="../js/menuToggle.js" defer></script>
+</body>
+</html>
